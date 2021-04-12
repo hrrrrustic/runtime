@@ -14,7 +14,7 @@ namespace Microsoft.DotNet.PlatformAbstractions
     {
         private long _combinedHash64;
 
-        public int CombinedHash
+        public readonly int CombinedHash
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get { return _combinedHash64.GetHashCode(); }

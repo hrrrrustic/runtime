@@ -11,7 +11,7 @@ namespace Microsoft.DotNet.PlatformAbstractions
     public partial struct HashCodeCombiner
     {
         private int _dummyPrimitive;
-        public int CombinedHash { get { throw null; } }
+        public readonly int CombinedHash { get { throw null; } }
         public void Add(int i) { }
         public void Add(object o) { }
         public void Add(string s) { }
@@ -53,9 +53,9 @@ namespace Microsoft.Extensions.DependencyModel
         public Dependency(string name, string version) { throw null; }
         public readonly string Name { get { throw null; } }
         public readonly string Version { get { throw null; } }
-        public bool Equals(Microsoft.Extensions.DependencyModel.Dependency other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public override int GetHashCode() { throw null; }
+        public readonly bool Equals(Microsoft.Extensions.DependencyModel.Dependency other) { throw null; }
+        public override readonly bool Equals(object obj) { throw null; }
+        public override readonly int GetHashCode() { throw null; }
     }
     public partial class DependencyContext
     {

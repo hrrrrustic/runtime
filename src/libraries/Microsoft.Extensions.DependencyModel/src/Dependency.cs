@@ -22,21 +22,21 @@ namespace Microsoft.Extensions.DependencyModel
             Version = version;
         }
 
-        public string Name { get; }
-        public string Version { get; }
+        public readonly string Name { get; }
+        public readonly string Version { get; }
 
-        public bool Equals(Dependency other)
+        public readonly bool Equals(Dependency other)
         {
             return string.Equals(Name, other.Name) && string.Equals(Version, other.Version);
         }
 
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
         {
             if (obj is null) return false;
             return obj is Dependency && Equals((Dependency) obj);
         }
 
-        public override int GetHashCode() =>
+        public override readonly int GetHashCode() =>
             HashHelpers.Combine(Name.GetHashCode(), Version.GetHashCode());
     }
 }
