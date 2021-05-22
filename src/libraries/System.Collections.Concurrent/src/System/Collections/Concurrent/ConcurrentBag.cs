@@ -218,12 +218,7 @@ namespace System.Collections.Concurrent
                     (TryStealFromTo(localQueue._nextQueue, null, out result, take) || TryStealFromTo(_workStealingQueues, localQueue, out result, take));
                 if (gotItem)
                 {
-#pragma warning disable CS8762
-                    // https://github.com/dotnet/runtime/issues/36132
-                    // Compiler can't automatically deduce that nullability constraints
-                    // for 'result' are satisfied at this exit point.
                     return true;
-#pragma warning restore CS8762
                 }
 
                 if (Interlocked.Read(ref _emptyToNonEmptyListTransitionCount) == initialEmptyToNonEmptyCounts)
@@ -242,7 +237,7 @@ namespace System.Collections.Concurrent
         /// <summary>
         /// Attempts to steal from each queue starting from <paramref name="startInclusive"/> to <paramref name="endExclusive"/>.
         /// </summary>
-        private bool TryStealFromTo(WorkStealingQueue? startInclusive, WorkStealingQueue? endExclusive, [MaybeNullWhen(false)] out T result, bool take)
+        private bool TryStealFromTo(WorkStealingQueue? startInclusive, WorkStealingQueue? endExclusive, [NotNullWhen(true)] out T result, bool take)
         {
             for (WorkStealingQueue? queue = startInclusive; queue != endExclusive; queue = queue._nextQueue)
             {
@@ -252,7 +247,7 @@ namespace System.Collections.Concurrent
                 }
             }
 
-            result = default(T);
+            result = default(T)!;
             return false;
         }
 
@@ -969,7 +964,7 @@ namespace System.Collections.Concurrent
             /// <summary>Steal an item from the head of the queue.</summary>
             /// <param name="result">the removed item</param>
             /// <param name="take">true to take the item; false to simply peek at it</param>
-            internal bool TrySteal([MaybeNullWhen(false)] out T result, bool take)
+            internal bool TrySteal([NotNullWhen(true)] out T result, bool take)
             {
                 lock (this)
                 {
@@ -999,7 +994,7 @@ namespace System.Collections.Concurrent
                         if (head < _tailIndex)
                         {
                             int idx = head & _mask;
-                            result = _array[idx];
+                            result = _array[idx]!;
                             _array[idx] = default(T)!;
                             _stealCount++;
                             return true;
@@ -1013,13 +1008,13 @@ namespace System.Collections.Concurrent
                     else if (head < _tailIndex)
                     {
                         // Peek, if there's an element available
-                        result = _array[head & _mask];
+                        result = _array[head & _mask]!;
                         return true;
                     }
                 }
 
                 // The queue was empty.
-                result = default(T);
+                result = default(T)!;
                 return false;
             }
 
