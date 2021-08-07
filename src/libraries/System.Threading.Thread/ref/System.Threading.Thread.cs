@@ -100,41 +100,94 @@ namespace System.Threading
         public void UnsafeStart() { }
         [System.Runtime.Versioning.UnsupportedOSPlatformAttribute("browser")]
         public void UnsafeStart(object? parameter) { }
+
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static byte VolatileRead(ref byte address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static double VolatileRead(ref double address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static short VolatileRead(ref short address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static int VolatileRead(ref int address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static long VolatileRead(ref long address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static System.IntPtr VolatileRead(ref System.IntPtr address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("address")]
         public static object? VolatileRead([System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("address")] ref object? address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static sbyte VolatileRead(ref sbyte address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static float VolatileRead(ref float address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static ushort VolatileRead(ref ushort address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static uint VolatileRead(ref uint address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static ulong VolatileRead(ref ulong address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static System.UIntPtr VolatileRead(ref System.UIntPtr address) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref byte address, byte value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref double address, double value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref short address, short value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref int address, int value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref long address, long value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref System.IntPtr address, System.IntPtr value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite([System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("value")] ref object? address, object? value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref sbyte address, sbyte value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         public static void VolatileWrite(ref float address, float value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref ushort address, ushort value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref uint address, uint value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref ulong address, ulong value) { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.ObsoleteAttribute("Thread.Volatile methods are obsolete. Use Volatile class instead", DiagnosticId = "SYSLIB0033", UrlFormat = "https://aka.ms/dotnet-warnings/{0}")]
         [System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref System.UIntPtr address, System.UIntPtr value) { }
         public static bool Yield() { throw null; }

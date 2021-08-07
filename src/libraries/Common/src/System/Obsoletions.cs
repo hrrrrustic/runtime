@@ -107,5 +107,8 @@ namespace System
 
         internal const string CorruptedStateRecoveryMessage = "Recovery from corrupted process state exceptions is not supported; HandleProcessCorruptedStateExceptionsAttribute is ignored.";
         internal const string CorruptedStateRecoveryDiagId = "SYSLIB0032";
+
+        internal const string ThreadVolatileMethodsMessage = "Thread.Volatile methods are obsolete. Use Volatile class instead";
+        internal const string ThreadVolatileMethodsId = "SYSLIB0033";
     }
 }
