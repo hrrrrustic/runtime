@@ -26,10 +26,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            if (wrapMode < WrapMode.Tile || wrapMode > WrapMode.Clamp)
-            {
-                throw new InvalidEnumArgumentException(nameof(wrapMode), unchecked((int)wrapMode), typeof(WrapMode));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture(new HandleRef(image, image.nativeImage),
@@ -44,10 +41,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            if (wrapMode < WrapMode.Tile || wrapMode > WrapMode.Clamp)
-            {
-                throw new InvalidEnumArgumentException(nameof(wrapMode), unchecked((int)wrapMode), typeof(WrapMode));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture2(new HandleRef(image, image.nativeImage),
@@ -66,10 +60,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            if (wrapMode < WrapMode.Tile || wrapMode > WrapMode.Clamp)
-            {
-                throw new InvalidEnumArgumentException(nameof(wrapMode), unchecked((int)wrapMode), typeof(WrapMode));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture2I(new HandleRef(image, image.nativeImage),
@@ -173,10 +164,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < WrapMode.Tile || value > WrapMode.Clamp)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(WrapMode));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 int status = Gdip.GdipSetTextureWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value));
                 Gdip.CheckStatus(status);

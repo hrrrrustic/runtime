@@ -46,8 +46,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                if (value < X509RevocationMode.NoCheck || value > X509RevocationMode.Offline)
-                    throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, nameof(value)));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationMode.NoCheck, X509RevocationMode.Offline);
                 _revocationMode = value;
             }
         }
@@ -60,8 +59,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                if (value < X509RevocationFlag.EndCertificateOnly || value > X509RevocationFlag.ExcludeRoot)
-                    throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, nameof(value)));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationFlag.EndCertificateOnly, X509RevocationFlag.ExcludeRoot);
                 _revocationFlag = value;
             }
         }
@@ -74,8 +72,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                if (value < X509VerificationFlags.NoFlag || value > X509VerificationFlags.AllFlags)
-                    throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, nameof(value)));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509VerificationFlags.NoFlag, X509VerificationFlags.AllFlags);
                 _verificationFlags = value;
             }
         }
@@ -88,8 +85,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                if (value < X509ChainTrustMode.System || value > X509ChainTrustMode.CustomRootTrust)
-                    throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, nameof(value)));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509ChainTrustMode.System, X509ChainTrustMode.CustomRootTrust);
                 _trustMode = value;
             }
         }

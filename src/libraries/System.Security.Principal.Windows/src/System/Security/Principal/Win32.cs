@@ -67,11 +67,7 @@ namespace System.Security.Principal
 
             byte SubAuthorityCount = Marshal.ReadByte(binaryForm, 1);
 
-            if (SubAuthorityCount < 0 ||
-                SubAuthorityCount > SecurityIdentifier.MaxSubAuthorities)
-            {
-                throw new ArgumentException(SR.Format(SR.IdentityReference_InvalidNumberOfSubauthorities, SecurityIdentifier.MaxSubAuthorities), nameof(binaryForm));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(SubAuthorityCount, 0, SecurityIdentifier.MaxSubAuthorities);
 
             //
             // Compute the size of the binary form of this SID and allocate the memory

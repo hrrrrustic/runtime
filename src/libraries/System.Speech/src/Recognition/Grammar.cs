@@ -216,10 +216,7 @@ namespace System.Speech.Recognition
             get { return _weight; }
             set
             {
-                if (value < 0.0 || value > 1.0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.Get(SRID.GrammarInvalidWeight));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, 0.0, 1.0);
                 // Note: you can still set or get this property regardless of whether the Grammar is loaded or not.
                 // In theory we could throw in certain scenarios but this is probably simplest.
                 if (_grammarState != GrammarState.Unloaded && !_weight.Equals(value))
@@ -239,11 +236,7 @@ namespace System.Speech.Recognition
             get { return _priority; }
             set
             {
-                if (value < -128 || value > 127)
-                {
-                    // We could have used sbyte in the signature of this property but int is probably simpler.
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.Get(SRID.GrammarInvalidPriority));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, -128, 127);
                 if (_grammarState != GrammarState.Unloaded && _priority != value)
                 {
                     _recognizer.SetGrammarPriority(this, value);

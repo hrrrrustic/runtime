@@ -66,14 +66,8 @@ namespace System.IO.Pipes
             {
                 throw new ArgumentOutOfRangeException(nameof(options), SR.ArgumentOutOfRange_OptionsInvalid);
             }
-            if (impersonationLevel < TokenImpersonationLevel.None || impersonationLevel > TokenImpersonationLevel.Delegation)
-            {
-                throw new ArgumentOutOfRangeException(nameof(impersonationLevel), SR.ArgumentOutOfRange_ImpersonationInvalid);
-            }
-            if (inheritability < HandleInheritability.None || inheritability > HandleInheritability.Inheritable)
-            {
-                throw new ArgumentOutOfRangeException(nameof(inheritability), SR.ArgumentOutOfRange_HandleInheritabilityNoneOrInheritable);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(impersonationLevel, TokenImpersonationLevel.None, TokenImpersonationLevel.Delegation);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
             if ((options & PipeOptions.CurrentUserOnly) != 0)
             {
                 IsCurrentUserOnly = true;
@@ -208,10 +202,7 @@ namespace System.IO.Pipes
         private static int ToTimeoutMilliseconds(TimeSpan timeout)
         {
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new ArgumentOutOfRangeException(nameof(timeout));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
             return (int)totalMilliseconds;
         }
 

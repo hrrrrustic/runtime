@@ -442,8 +442,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetForest == null)
                 throw new ArgumentNullException(nameof(targetForest));
 
-            if (direction < TrustDirection.Inbound || direction > TrustDirection.Bidirectional)
-                throw new InvalidEnumArgumentException(nameof(direction), (int)direction, typeof(TrustDirection));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             // verify outbound trust first
             if ((direction & TrustDirection.Outbound) != 0)
@@ -482,8 +481,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetForestName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(targetForestName));
 
-            if (direction < TrustDirection.Inbound || direction > TrustDirection.Bidirectional)
-                throw new InvalidEnumArgumentException(nameof(direction), (int)direction, typeof(TrustDirection));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             if (trustPassword == null)
                 throw new ArgumentNullException(nameof(trustPassword));
@@ -506,8 +504,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetForest == null)
                 throw new ArgumentNullException(nameof(targetForest));
 
-            if (direction < TrustDirection.Inbound || direction > TrustDirection.Bidirectional)
-                throw new InvalidEnumArgumentException(nameof(direction), (int)direction, typeof(TrustDirection));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             string password = TrustHelper.CreateTrustPassword();
 
@@ -553,8 +550,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetForestName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(targetForestName));
 
-            if (newTrustDirection < TrustDirection.Inbound || newTrustDirection > TrustDirection.Bidirectional)
-                throw new InvalidEnumArgumentException(nameof(newTrustDirection), (int)newTrustDirection, typeof(TrustDirection));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             if (newTrustPassword == null)
                 throw new ArgumentNullException(nameof(newTrustPassword));
@@ -572,8 +568,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetForest == null)
                 throw new ArgumentNullException(nameof(targetForest));
 
-            if (newTrustDirection < TrustDirection.Inbound || newTrustDirection > TrustDirection.Bidirectional)
-                throw new InvalidEnumArgumentException(nameof(newTrustDirection), (int)newTrustDirection, typeof(TrustDirection));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             // no we generate trust password
             string password = TrustHelper.CreateTrustPassword();

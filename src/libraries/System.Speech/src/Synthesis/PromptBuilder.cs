@@ -65,10 +65,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            if (rate < PromptRate.NotSet || rate > PromptRate.ExtraSlow)
-            {
-                throw new ArgumentOutOfRangeException(nameof(rate));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(rate, PromptRate.NotSet, PromptRate.ExtraSlow);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -103,10 +100,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            if (volume < PromptVolume.NotSet || volume > PromptVolume.Default)
-            {
-                throw new ArgumentOutOfRangeException(nameof(volume));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(volume, PromptVolume.NotSet, PromptVolume.Default);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -143,10 +137,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            if (emphasis < PromptEmphasis.NotSet || emphasis > PromptEmphasis.Reduced)
-            {
-                throw new ArgumentOutOfRangeException(nameof(emphasis));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(emphasis, PromptEmphasis.NotSet, PromptEmphasis.Reduced);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -429,10 +420,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            if (sayAs < SayAs.SpellOut || sayAs > SayAs.Text)
-            {
-                throw new ArgumentOutOfRangeException(nameof(sayAs));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(sayAs, SayAs.SpellOut, SayAs.Text);
 
             // check for well formed document
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);

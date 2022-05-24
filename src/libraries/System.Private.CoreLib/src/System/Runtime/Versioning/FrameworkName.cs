@@ -116,10 +116,7 @@ namespace System.Runtime.Versioning
             string[] components = frameworkName.Split(ComponentSeparator);
 
             // Identifier and Version are required, Profile is optional.
-            if (components.Length < 2 || components.Length > 3)
-            {
-                throw new ArgumentException(SR.Argument_FrameworkNameTooShort, nameof(frameworkName));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(components.Length, 2, 3);
 
             //
             // 1) Parse the "Identifier", which must come first. Trim any whitespace

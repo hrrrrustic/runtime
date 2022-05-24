@@ -216,10 +216,7 @@ namespace System.Threading
         public Barrier(int participantCount, Action<Barrier>? postPhaseAction)
         {
             // the count must be non negative value
-            if (participantCount < 0 || participantCount > MAX_PARTICIPANTS)
-            {
-                throw new ArgumentOutOfRangeException(nameof(participantCount), participantCount, SR.Barrier_ctor_ArgumentOutOfRange);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(participantCount, 0, MAX_PARTICIPANTS);
             _currentTotalCount = (int)participantCount;
             _postPhaseAction = postPhaseAction;
 
@@ -554,11 +551,7 @@ namespace System.Threading
         public bool SignalAndWait(TimeSpan timeout, CancellationToken cancellationToken)
         {
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(nameof(timeout), timeout,
-                    SR.Barrier_SignalAndWait_ArgumentOutOfRange);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
             return SignalAndWait((int)timeout.TotalMilliseconds, cancellationToken);
         }
 

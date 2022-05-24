@@ -391,10 +391,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < LineJoin.Miter || value > LineJoin.MiterClipped)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(LineJoin));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, LineJoin.Miter, LineJoin.MiterClipped);
 
                 if (_immutable)
                 {
@@ -446,10 +443,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < PenAlignment.Center || value > PenAlignment.Right)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(PenAlignment));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PenAlignment.Center, PenAlignment.Right);
 
                 if (_immutable)
                 {
@@ -721,10 +715,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < DashStyle.Solid || value > DashStyle.Custom)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(DashStyle));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DashStyle.Solid, DashStyle.Custom);
 
                 if (_immutable)
                 {
@@ -896,10 +887,7 @@ namespace System.Drawing
 
                 foreach (float val in value)
                 {
-                    if (val < 0 || val > 1)
-                    {
-                        throw new ArgumentException(SR.GdiplusInvalidParameter);
-                    }
+                    ArgumentOutOfRangeException.ThrowIfNotBetween(val, 0, 1);
                 }
 
                 int status = Gdip.GdipSetPenCompoundArray(new HandleRef(this, NativePen), value, value.Length);

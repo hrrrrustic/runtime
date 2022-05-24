@@ -638,13 +638,7 @@ namespace System.Globalization
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
                 }
 
-                if (value < DayOfWeek.Sunday || value > DayOfWeek.Saturday)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        nameof(value),
-                        value,
-                        SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
                 firstDayOfWeek = (int)value;
             }
@@ -668,13 +662,7 @@ namespace System.Globalization
                 {
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
                 }
-                if (value < CalendarWeekRule.FirstDay || value > CalendarWeekRule.FirstFourDayWeek)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        nameof(value),
-                        value,
-                        SR.Format(SR.ArgumentOutOfRange_Range, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek);
 
                 calendarWeekRule = (int)value;
             }
@@ -1231,13 +1219,7 @@ namespace System.Globalization
 
         public string GetAbbreviatedDayName(DayOfWeek dayofweek)
         {
-            if (dayofweek < DayOfWeek.Sunday || dayofweek > DayOfWeek.Saturday)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(dayofweek),
-                    dayofweek,
-                    SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(dayofweek, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
             // Don't call the public property AbbreviatedDayNames here since a clone is needed in that
             // property, so it will be slower. Instead, use GetAbbreviatedDayOfWeekNames() directly.
@@ -1249,13 +1231,7 @@ namespace System.Globalization
         /// </summary>
         public string GetShortestDayName(DayOfWeek dayOfWeek)
         {
-            if (dayOfWeek < DayOfWeek.Sunday || dayOfWeek > DayOfWeek.Saturday)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(dayOfWeek),
-                    dayOfWeek,
-                    SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(dayOfWeek, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
             // Don't call the public property SuperShortDayNames here since a clone is needed in that
             // property, so it will be slower. Instead, use internalGetSuperShortDayNames() directly.
@@ -1364,13 +1340,7 @@ namespace System.Globalization
 
         public string GetDayName(DayOfWeek dayofweek)
         {
-            if ((int)dayofweek < 0 || (int)dayofweek > 6)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(dayofweek),
-                    dayofweek,
-                    SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween((int)dayofweek, 0, 6);
 
             // Use the internal one so that we don't clone the array unnecessarily
             return InternalGetDayOfWeekNames()[(int)dayofweek];
@@ -1378,13 +1348,7 @@ namespace System.Globalization
 
         public string GetAbbreviatedMonthName(int month)
         {
-            if (month < 1 || month > 13)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(month),
-                    month,
-                    SR.Format(SR.ArgumentOutOfRange_Range, 1, 13));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(month, 1, 13);
 
             // Use the internal one so we don't clone the array unnecessarily
             return InternalGetAbbreviatedMonthNames()[month - 1];
@@ -1392,13 +1356,7 @@ namespace System.Globalization
 
         public string GetMonthName(int month)
         {
-            if (month < 1 || month > 13)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(month),
-                    month,
-                    SR.Format(SR.ArgumentOutOfRange_Range, 1, 13));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(month, 1, 13);
 
             // Use the internal one so we don't clone the array unnecessarily
             return InternalGetMonthNames()[month - 1];

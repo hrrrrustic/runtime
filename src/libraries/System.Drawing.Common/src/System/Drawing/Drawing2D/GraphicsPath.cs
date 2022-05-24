@@ -129,8 +129,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                if (value < FillMode.Alternate || value > FillMode.Winding)
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(FillMode));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, FillMode.Alternate, FillMode.Winding);
 
                 Gdip.CheckStatus(Gdip.GdipSetPathFillMode(new HandleRef(this, _nativePath), value));
             }

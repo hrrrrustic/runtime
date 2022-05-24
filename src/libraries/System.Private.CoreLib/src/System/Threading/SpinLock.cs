@@ -223,11 +223,7 @@ namespace System.Threading
         {
             // Validate the timeout
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(
-                    nameof(timeout), timeout, SR.SpinLock_TryEnter_ArgumentOutOfRange);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
 
             // Call reliable enter with the int-based timeout milliseconds
             TryEnter((int)timeout.TotalMilliseconds, ref lockTaken);

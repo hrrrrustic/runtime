@@ -317,8 +317,7 @@ namespace System.DirectoryServices.Protocols
             get => _flag;
             set
             {
-                if (value < ExtendedDNFlag.HexString || value > ExtendedDNFlag.StandardString)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(ExtendedDNFlag));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDNFlag.HexString, ExtendedDNFlag.StandardString);
 
                 _flag = value;
             }
@@ -380,8 +379,7 @@ namespace System.DirectoryServices.Protocols
             get => _searchOption;
             set
             {
-                if (value < SearchOption.DomainScope || value > SearchOption.PhantomRoot)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(SearchOption));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchOption.DomainScope, SearchOption.PhantomRoot);
 
                 _searchOption = value;
             }

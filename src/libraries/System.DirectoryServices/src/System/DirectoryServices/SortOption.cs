@@ -36,10 +36,7 @@ namespace System.DirectoryServices
             get => _sortDirection;
             set
             {
-                if (value < SortDirection.Ascending || value > SortDirection.Descending)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(SortDirection));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SortDirection.Ascending, SortDirection.Descending);
 
                 _sortDirection = value;
             }

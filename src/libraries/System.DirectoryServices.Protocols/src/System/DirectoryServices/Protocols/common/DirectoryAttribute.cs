@@ -237,10 +237,7 @@ namespace System.DirectoryServices.Protocols
             get => _attributeOperation;
             set
             {
-                if (value < DirectoryAttributeOperation.Add || value > DirectoryAttributeOperation.Replace)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(DirectoryAttributeOperation));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DirectoryAttributeOperation.Add, DirectoryAttributeOperation.Replace);
 
                 _attributeOperation = value;
             }

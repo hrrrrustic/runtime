@@ -52,10 +52,7 @@ namespace System.Net
             set
             {
                 CheckDisposed();
-                if (value < 100 || value > 999)
-                {
-                    throw new ProtocolViolationException(SR.net_invalidstatus);
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, 100, 999);
                 _nativeResponse.StatusCode = (ushort)value;
             }
         }

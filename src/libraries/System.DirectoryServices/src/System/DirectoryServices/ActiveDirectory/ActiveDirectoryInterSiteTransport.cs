@@ -42,8 +42,7 @@ namespace System.DirectoryServices.ActiveDirectory
                     throw new ArgumentException(SR.NotADOrADAM, nameof(context));
             }
 
-            if (transport < ActiveDirectoryTransportType.Rpc || transport > ActiveDirectoryTransportType.Smtp)
-                throw new InvalidEnumArgumentException("value", (int)transport, typeof(ActiveDirectoryTransportType));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
 
             //  work with copy of the context
             context = new DirectoryContext(context);

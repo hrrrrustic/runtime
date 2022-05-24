@@ -37,8 +37,7 @@ namespace System.Diagnostics
 
             set
             {
-                if (value < TraceLevel.Off || value > TraceLevel.Verbose)
-                    throw new ArgumentException(SR.TraceSwitchInvalidLevel);
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, TraceLevel.Off, TraceLevel.Verbose);
                 SwitchSetting = (int)value;
             }
         }

@@ -70,10 +70,7 @@ namespace System.DirectoryServices.Protocols
 
             _connectionAuthType = authType;
 
-            if (authType < AuthType.Anonymous || authType > AuthType.Kerberos)
-            {
-                throw new InvalidEnumArgumentException(nameof(authType), (int)authType, typeof(AuthType));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(authType, AuthType.Anonymous, AuthType.Kerberos);
 
             // Throw if user wants to do anonymous bind but specifies credentials.
             if (AuthType == AuthType.Anonymous && (_directoryCredential != null && (!string.IsNullOrEmpty(_directoryCredential.Password) || !string.IsNullOrEmpty(_directoryCredential.UserName))))
@@ -124,10 +121,7 @@ namespace System.DirectoryServices.Protocols
             get => _connectionAuthType;
             set
             {
-                if (value < AuthType.Anonymous || value > AuthType.Kerberos)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(AuthType));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, AuthType.Anonymous, AuthType.Kerberos);
 
                 // If the change is made after we have bound to the server and value is really
                 // changed, set the flag to indicate the need to do rebind.
@@ -301,10 +295,7 @@ namespace System.DirectoryServices.Protocols
                 throw new ArgumentNullException(nameof(request));
             }
 
-            if (partialMode < PartialResultProcessing.NoPartialResultSupport || partialMode > PartialResultProcessing.ReturnPartialResultsAndNotifyCallback)
-            {
-                throw new InvalidEnumArgumentException(nameof(partialMode), (int)partialMode, typeof(PartialResultProcessing));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(partialMode, PartialResultProcessing.NoPartialResultSupport, PartialResultProcessing.ReturnPartialResultsAndNotifyCallback);
 
             if (partialMode != PartialResultProcessing.NoPartialResultSupport && !(request is SearchRequest))
             {

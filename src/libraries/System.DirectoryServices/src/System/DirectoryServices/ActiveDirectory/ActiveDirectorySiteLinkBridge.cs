@@ -344,8 +344,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (bridgeName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(bridgeName));
 
-            if (transport < ActiveDirectoryTransportType.Rpc || transport > ActiveDirectoryTransportType.Smtp)
-                throw new InvalidEnumArgumentException("value", (int)transport, typeof(ActiveDirectoryTransportType));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
         }
 
         private void GetLinks()

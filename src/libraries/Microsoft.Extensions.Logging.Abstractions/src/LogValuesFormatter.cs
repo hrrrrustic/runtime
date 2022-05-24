@@ -187,10 +187,7 @@ namespace Microsoft.Extensions.Logging
 
         public KeyValuePair<string, object?> GetValue(object?[] values, int index)
         {
-            if (index < 0 || index > _valueNames.Count)
-            {
-                throw new IndexOutOfRangeException(nameof(index));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(index, 0, _valueNames.Count);
 
             if (_valueNames.Count > index)
             {

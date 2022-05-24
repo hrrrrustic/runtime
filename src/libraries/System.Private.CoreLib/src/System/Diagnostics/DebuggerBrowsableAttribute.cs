@@ -30,8 +30,7 @@ namespace System.Diagnostics
     {
         public DebuggerBrowsableAttribute(DebuggerBrowsableState state)
         {
-            if (state < DebuggerBrowsableState.Never || state > DebuggerBrowsableState.RootHidden)
-                throw new ArgumentOutOfRangeException(nameof(state));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(state, DebuggerBrowsableState.Never, DebuggerBrowsableState.RootHidden);
 
             State = state;
         }

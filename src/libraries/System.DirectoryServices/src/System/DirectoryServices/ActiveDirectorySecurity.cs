@@ -386,10 +386,7 @@ namespace System.DirectoryServices
         {
             int accessMask = 0;
 
-            if (access < PropertyAccess.Read || access > PropertyAccess.Write)
-            {
-                throw new InvalidEnumArgumentException(nameof(access), (int)access, typeof(PropertyAccess));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, PropertyAccess.Read, PropertyAccess.Write);
 
             switch (access)
             {
@@ -451,20 +448,14 @@ namespace System.DirectoryServices
 
         internal static InheritanceFlags GetInheritanceFlags(ActiveDirectorySecurityInheritance inheritanceType)
         {
-            if (inheritanceType < ActiveDirectorySecurityInheritance.None || inheritanceType > ActiveDirectorySecurityInheritance.Children)
-            {
-                throw new InvalidEnumArgumentException(nameof(inheritanceType), (int)inheritanceType, typeof(ActiveDirectorySecurityInheritance));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritanceType, ActiveDirectorySecurityInheritance.None, ActiveDirectorySecurityInheritance.Children);
 
             return ITToIF[(int)inheritanceType];
         }
 
         internal static PropagationFlags GetPropagationFlags(ActiveDirectorySecurityInheritance inheritanceType)
         {
-            if (inheritanceType < ActiveDirectorySecurityInheritance.None || inheritanceType > ActiveDirectorySecurityInheritance.Children)
-            {
-                throw new InvalidEnumArgumentException(nameof(inheritanceType), (int)inheritanceType, typeof(ActiveDirectorySecurityInheritance));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritanceType, ActiveDirectorySecurityInheritance.None, ActiveDirectorySecurityInheritance.Children);
 
             return ITToPF[(int)inheritanceType];
         }

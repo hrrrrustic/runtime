@@ -601,10 +601,7 @@ namespace System.DirectoryServices.ActiveDirectory
             {
                 CheckIfDisposed();
 
-                if (value < ActiveDirectorySyntax.CaseExactString || value > ActiveDirectorySyntax.ReplicaLink)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(ActiveDirectorySyntax));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ActiveDirectorySyntax.CaseExactString, ActiveDirectorySyntax.ReplicaLink);
 
                 if (isBound)
                 {

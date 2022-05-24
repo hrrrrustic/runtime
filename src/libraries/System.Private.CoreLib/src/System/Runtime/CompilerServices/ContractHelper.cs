@@ -31,8 +31,7 @@ namespace System.Runtime.CompilerServices
         [System.Diagnostics.DebuggerNonUserCode]
         public static string? RaiseContractFailedEvent(ContractFailureKind failureKind, string? userMessage, string? conditionText, Exception? innerException)
         {
-            if (failureKind < ContractFailureKind.Precondition || failureKind > ContractFailureKind.Assume)
-                throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, failureKind), nameof(failureKind));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(failureKind, ContractFailureKind.Precondition, ContractFailureKind.Assume);
 
             string? returnValue;
             string displayMessage = "contract failed.";  // Incomplete, but in case of OOM during resource lookup...

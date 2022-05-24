@@ -548,10 +548,8 @@ namespace System.Data
                             break;
                         case DateTimeKind.Unspecified: break;
                     }
-                    if ((int)argumentValues[1] < -14 || (int)argumentValues[1] > 14)
-                        throw ExprException.InvalidHoursArgument();
-                    if ((int)argumentValues[2] < -59 || (int)argumentValues[2] > 59)
-                        throw ExprException.InvalidMinutesArgument();
+                    ArgumentOutOfRangeException.ThrowIfNotBetween((int)argumentValues[1], -14, 14);
+                    ArgumentOutOfRangeException.ThrowIfNotBetween((int)argumentValues[2], -59, 59);
                     // range should be within -14 hours and  +14 hours
                     if ((int)argumentValues[1] == 14 && (int)argumentValues[2] > 0)
                         throw ExprException.InvalidTimeZoneRange();

@@ -239,10 +239,7 @@ namespace System.DirectoryServices.ActiveDirectory
         {
             CheckIfDisposed();
 
-            if (role < AdamRole.SchemaRole || role > AdamRole.NamingRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(AdamRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, AdamRole.SchemaRole, AdamRole.NamingRole);
 
             // set the appropriate attribute on the root dse
             try

@@ -91,8 +91,7 @@ namespace System.Security.Cryptography.X509Certificates
         {
             ArgumentNullException.ThrowIfNull(certificates);
 
-            if (selectionFlag < X509SelectionFlag.SingleSelection || selectionFlag > X509SelectionFlag.MultiSelection)
-                throw new ArgumentException(SR.Format(SR.Enum_InvalidValue, nameof(selectionFlag)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(selectionFlag, X509SelectionFlag.SingleSelection, X509SelectionFlag.MultiSelection);
 
             using (SafeCertStoreHandle safeSourceStoreHandle = X509Utils.ExportToMemoryStore(certificates))
             using (SafeCertStoreHandle safeTargetStoreHandle = SelectFromStore(safeSourceStoreHandle, title, message, selectionFlag, hwndParent))

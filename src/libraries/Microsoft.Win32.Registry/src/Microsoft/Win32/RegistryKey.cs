@@ -516,10 +516,7 @@ namespace Microsoft.Win32
 
         public object? GetValue(string? name, object? defaultValue, RegistryValueOptions options)
         {
-            if (options < RegistryValueOptions.None || options > RegistryValueOptions.DoNotExpandEnvironmentNames)
-            {
-                throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, (int)options), nameof(options));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(options, RegistryValueOptions.None, RegistryValueOptions.DoNotExpandEnvironmentNames);
             bool doNotExpand = (options == RegistryValueOptions.DoNotExpandEnvironmentNames);
             return InternalGetValue(name, defaultValue, doNotExpand);
         }
@@ -738,18 +735,12 @@ namespace Microsoft.Win32
 
         private static void ValidateKeyMode(RegistryKeyPermissionCheck mode)
         {
-            if (mode < RegistryKeyPermissionCheck.Default || mode > RegistryKeyPermissionCheck.ReadWriteSubTree)
-            {
-                throw new ArgumentException(SR.Argument_InvalidRegistryKeyPermissionCheck, nameof(mode));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(mode, RegistryKeyPermissionCheck.Default, RegistryKeyPermissionCheck.ReadWriteSubTree);
         }
 
         private static void ValidateKeyOptions(RegistryOptions options)
         {
-            if (options < RegistryOptions.None || options > RegistryOptions.Volatile)
-            {
-                throw new ArgumentException(SR.Argument_InvalidRegistryOptionsCheck, nameof(options));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(options, RegistryOptions.None, RegistryOptions.Volatile);
         }
 
         private static void ValidateKeyView(RegistryView view)

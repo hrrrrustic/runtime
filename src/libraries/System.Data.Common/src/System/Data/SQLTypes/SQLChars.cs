@@ -303,8 +303,7 @@ namespace System.Data.SqlTypes
             if (offsetInBuffer > buffer.Length || offsetInBuffer < 0)
                 throw new ArgumentOutOfRangeException(nameof(offsetInBuffer));
 
-            if (count < 0 || count > buffer.Length - offsetInBuffer)
-                throw new ArgumentOutOfRangeException(nameof(count));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(count, 0, buffer.Length - offsetInBuffer);
 
             // Adjust count based on data length
             if (count > Length - offset)
@@ -351,11 +350,9 @@ namespace System.Data.SqlTypes
                 if (offset > _rgchBuf.Length)
                     throw new SqlTypeException(SR.SqlMisc_BufferInsufficientMessage);
 
-                if (offsetInBuffer < 0 || offsetInBuffer > buffer.Length)
-                    throw new ArgumentOutOfRangeException(nameof(offsetInBuffer));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(offsetInBuffer, 0, buffer.Length);
 
-                if (count < 0 || count > buffer.Length - offsetInBuffer)
-                    throw new ArgumentOutOfRangeException(nameof(count));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(count, 0, buffer.Length - offsetInBuffer);
 
                 if (count > _rgchBuf.Length - offset)
                     throw new SqlTypeException(SR.SqlMisc_BufferInsufficientMessage);
@@ -618,22 +615,19 @@ namespace System.Data.SqlTypes
             switch (origin)
             {
                 case SeekOrigin.Begin:
-                    if (offset < 0 || offset > _sqlchars.Length)
-                        throw ADP.ArgumentOutOfRange(nameof(offset));
+                    ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, _sqlchars.Length);
                     _lPosition = offset;
                     break;
 
                 case SeekOrigin.Current:
                     lPosition = _lPosition + offset;
-                    if (lPosition < 0 || lPosition > _sqlchars.Length)
-                        throw ADP.ArgumentOutOfRange(nameof(offset));
+                    ArgumentOutOfRangeException.ThrowIfNotBetween(lPosition, 0, _sqlchars.Length);
                     _lPosition = lPosition;
                     break;
 
                 case SeekOrigin.End:
                     lPosition = _sqlchars.Length + offset;
-                    if (lPosition < 0 || lPosition > _sqlchars.Length)
-                        throw ADP.ArgumentOutOfRange(nameof(offset));
+                    ArgumentOutOfRangeException.ThrowIfNotBetween(lPosition, 0, _sqlchars.Length);
                     _lPosition = lPosition;
                     break;
 
@@ -651,10 +645,8 @@ namespace System.Data.SqlTypes
 
             if (buffer == null)
                 throw new ArgumentNullException(nameof(buffer));
-            if (offset < 0 || offset > buffer.Length)
-                throw new ArgumentOutOfRangeException(nameof(offset));
-            if (count < 0 || count > buffer.Length - offset)
-                throw new ArgumentOutOfRangeException(nameof(count));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, buffer.Length);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(count, 0, buffer.Length - offset);
 
             int icharsRead = (int)_sqlchars.Read(_lPosition, buffer, offset, count);
             _lPosition += icharsRead;
@@ -668,10 +660,8 @@ namespace System.Data.SqlTypes
 
             if (buffer == null)
                 throw new ArgumentNullException(nameof(buffer));
-            if (offset < 0 || offset > buffer.Length)
-                throw new ArgumentOutOfRangeException(nameof(offset));
-            if (count < 0 || count > buffer.Length - offset)
-                throw new ArgumentOutOfRangeException(nameof(count));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, buffer.Length);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(count, 0, buffer.Length - offset);
 
             _sqlchars.Write(_lPosition, buffer, offset, count);
             _lPosition += count;

@@ -781,72 +781,63 @@ namespace System.Xml.Schema
 
         internal static int DecimalToInt32(decimal value)
         {
-            if (value < (decimal)int.MinValue || value > (decimal)int.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "Int32" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (decimal)int.MinValue, (decimal)int.MaxValue);
 
             return (int)value;
         }
 
         protected static long DecimalToInt64(decimal value)
         {
-            if (value < (decimal)long.MinValue || value > (decimal)long.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "Int64" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (decimal)long.MinValue, (decimal)long.MaxValue);
 
             return (long)value;
         }
 
         protected static ulong DecimalToUInt64(decimal value)
         {
-            if (value < (decimal)ulong.MinValue || value > (decimal)ulong.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "UInt64" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (decimal)ulong.MinValue, (decimal)ulong.MaxValue);
 
             return (ulong)value;
         }
 
         protected static byte Int32ToByte(int value)
         {
-            if (value < (int)byte.MinValue || value > (int)byte.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "Byte" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (int)byte.MinValue, (int)byte.MaxValue);
 
             return (byte)value;
         }
 
         protected static short Int32ToInt16(int value)
         {
-            if (value < (int)short.MinValue || value > (int)short.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "Int16" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (int)short.MinValue, (int)short.MaxValue);
 
             return (short)value;
         }
 
         protected static sbyte Int32ToSByte(int value)
         {
-            if (value < (int)sbyte.MinValue || value > (int)sbyte.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "SByte" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (int)sbyte.MinValue, (int)sbyte.MaxValue);
 
             return (sbyte)value;
         }
 
         protected static ushort Int32ToUInt16(int value)
         {
-            if (value < (int)ushort.MinValue || value > (int)ushort.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "UInt16" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (int)ushort.MinValue, (int)ushort.MaxValue);
 
             return (ushort)value;
         }
 
         protected static int Int64ToInt32(long value)
         {
-            if (value < (long)int.MinValue || value > (long)int.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "Int32" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (long)int.MinValue, (long)int.MaxValue);
 
             return (int)value;
         }
 
         protected static uint Int64ToUInt32(long value)
         {
-            if (value < (long)uint.MinValue || value > (long)uint.MaxValue)
-                throw new OverflowException(SR.Format(SR.XmlConvert_Overflow, new string[] { XmlConvert.ToString(value), "UInt32" }));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, (long)uint.MinValue, (long)uint.MaxValue);
 
             return (uint)value;
         }

@@ -139,10 +139,7 @@ namespace System.Drawing.Printing
             }
             set
             {
-                if (value < Duplex.Default || value > Duplex.Horizontal)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(Duplex));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, Duplex.Default, Duplex.Horizontal);
 
                 _duplex = value;
             }

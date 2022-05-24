@@ -146,10 +146,7 @@ namespace System.Resources
             }
 
             fallbackLocation = attr.Location;
-            if (fallbackLocation < UltimateResourceFallbackLocation.MainAssembly || fallbackLocation > UltimateResourceFallbackLocation.Satellite)
-            {
-                throw new ArgumentException(SR.Format(SR.Arg_InvalidNeutralResourcesLanguage_FallbackLoc, fallbackLocation));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(fallbackLocation, UltimateResourceFallbackLocation.MainAssembly, UltimateResourceFallbackLocation.Satellite);
 
             try
             {

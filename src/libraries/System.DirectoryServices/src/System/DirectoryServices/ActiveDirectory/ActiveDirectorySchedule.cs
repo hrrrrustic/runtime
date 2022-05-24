@@ -97,17 +97,14 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public void SetSchedule(DayOfWeek day, HourOfDay fromHour, MinuteOfHour fromMinute, HourOfDay toHour, MinuteOfHour toMinute)
         {
-            if (day < DayOfWeek.Sunday || day > DayOfWeek.Saturday)
-                throw new InvalidEnumArgumentException(nameof(day), (int)day, typeof(DayOfWeek));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(day, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
-            if (fromHour < HourOfDay.Zero || fromHour > HourOfDay.TwentyThree)
-                throw new InvalidEnumArgumentException(nameof(fromHour), (int)fromHour, typeof(HourOfDay));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(fromHour, HourOfDay.Zero, HourOfDay.TwentyThree);
 
             if (fromMinute != MinuteOfHour.Zero && fromMinute != MinuteOfHour.Fifteen && fromMinute != MinuteOfHour.Thirty && fromMinute != MinuteOfHour.FortyFive)
                 throw new InvalidEnumArgumentException(nameof(fromMinute), (int)fromMinute, typeof(MinuteOfHour));
 
-            if (toHour < HourOfDay.Zero || toHour > HourOfDay.TwentyThree)
-                throw new InvalidEnumArgumentException(nameof(toHour), (int)toHour, typeof(HourOfDay));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(toHour, HourOfDay.Zero, HourOfDay.TwentyThree);
 
             if (toMinute != MinuteOfHour.Zero && toMinute != MinuteOfHour.Fifteen && toMinute != MinuteOfHour.Thirty && toMinute != MinuteOfHour.FortyFive)
                 throw new InvalidEnumArgumentException(nameof(toMinute), (int)toMinute, typeof(MinuteOfHour));
@@ -129,8 +126,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
             for (int i = 0; i < days.Length; i++)
             {
-                if (days[i] < DayOfWeek.Sunday || days[i] > DayOfWeek.Saturday)
-                    throw new InvalidEnumArgumentException(nameof(days), (int)days[i], typeof(DayOfWeek));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(days[i], DayOfWeek.Sunday, DayOfWeek.Saturday);
             }
 
             for (int i = 0; i < days.Length; i++)

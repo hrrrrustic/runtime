@@ -163,15 +163,13 @@ namespace System.Data.SqlTypes
             {
                 Debug.Assert(lHigh2 == 0);
                 lPartialResult = lHigh1 * lLow2;
-                if (lPartialResult < 0 || lPartialResult > long.MaxValue)
-                    throw new OverflowException(SQLResource.ArithOverflowMessage);
+                ArgumentOutOfRangeException.ThrowIfNotBetween(lPartialResult, 0, long.MaxValue);
             }
             else if (lHigh2 != 0)
             {
                 Debug.Assert(lHigh1 == 0);
                 lPartialResult = lLow1 * lHigh2;
-                if (lPartialResult < 0 || lPartialResult > long.MaxValue)
-                    throw new OverflowException(SQLResource.ArithOverflowMessage);
+                ArgumentOutOfRangeException.ThrowIfNotBetween(lPartialResult, 0, long.MaxValue);
             }
 
             lResult += lPartialResult << 32;

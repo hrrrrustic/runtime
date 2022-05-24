@@ -74,10 +74,7 @@ namespace System.Runtime.Serialization
                 publiclyVisible: value.Exposable);
 
             int desiredPosition = value.Position - value.Origin;
-            if (desiredPosition < 0 || desiredPosition > memoryStream.Length)
-            {
-                throw new InvalidOperationException();
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(desiredPosition, 0, memoryStream.Length);
             memoryStream.Position = desiredPosition;
 
             return memoryStream;

@@ -61,8 +61,7 @@ namespace System.Text
                 $"[ISCIIEncoding] Code page ({codePage} isn't supported by ISCIIEncoding!");
 
             // This shouldn't really be possible
-            if (_defaultCodePage < CodeDevanagari || _defaultCodePage > CodePunjabi)
-                throw new ArgumentException(SR.Format(SR.Argument_CodepageNotSupported, codePage), nameof(codePage));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(_defaultCodePage, CodeDevanagari, CodePunjabi);
         }
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)

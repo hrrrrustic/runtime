@@ -650,8 +650,7 @@ namespace System.Diagnostics.Contracts
         [System.Diagnostics.DebuggerNonUserCode]
         private static void ReportFailure(ContractFailureKind failureKind, string? userMessage, string? conditionText, Exception? innerException)
         {
-            if (failureKind < ContractFailureKind.Precondition || failureKind > ContractFailureKind.Assume)
-                throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, failureKind), nameof(failureKind));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(failureKind, ContractFailureKind.Precondition, ContractFailureKind.Assume);
 
             // displayMessage == null means: yes we handled it. Otherwise it is the localized failure message
             string? displayMessage = ContractHelper.RaiseContractFailedEvent(failureKind, userMessage, conditionText, innerException);

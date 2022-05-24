@@ -243,8 +243,7 @@ namespace System.Security.Cryptography
             ArgumentNullException.ThrowIfNull(inputBuffer);
 
             ArgumentOutOfRangeException.ThrowIfNegative(inputOffset);
-            if (inputCount < 0 || inputCount > inputBuffer.Length)
-                throw new ArgumentException(SR.Argument_InvalidValue);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inputCount, 0, inputBuffer.Length);
             if ((inputBuffer.Length - inputCount) < inputOffset)
                 throw new ArgumentException(SR.Argument_InvalidOffLen);
 

@@ -259,8 +259,7 @@ namespace System.Text
         }
         public override int GetMaxCharCount(int byteCount)
         {
-            if (byteCount < 0 || byteCount > int.MaxValue / 4 * 3 - 2)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentOutOfRangeException(nameof(byteCount), SR.Format(SR.ValueMustBeInRange, 0, int.MaxValue / 4 * 3 - 2)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(byteCount, 0, int.MaxValue / 4 * 3 - 2);
             return ((byteCount + 2) / 3) * 4;
         }
 
@@ -287,8 +286,7 @@ namespace System.Text
                 throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentOutOfRangeException(nameof(charIndex), SR.ValueMustBeNonNegative));
             if (charIndex > chars.Length)
                 throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentOutOfRangeException(nameof(charIndex), SR.Format(SR.OffsetExceedsBufferSize, chars.Length)));
-            if (charCount < 0 || charCount > chars.Length - charIndex)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(SR.XmlArrayTooSmall, nameof(chars)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(charCount, 0, chars.Length - charIndex);
 
             // We've computed exactly how many chars there are and verified that
             // there's enough space in the char buffer, so we can proceed without
@@ -375,8 +373,7 @@ namespace System.Text
             if (charIndex > chars.Length)
                 throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentOutOfRangeException(nameof(charIndex), SR.Format(SR.OffsetExceedsBufferSize, chars.Length)));
 
-            if (charCount < 0 || charCount > chars.Length - charIndex)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(SR.XmlArrayTooSmall, nameof(chars)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(charCount, 0, chars.Length - charIndex);
 
             // We've computed exactly how many chars there are and verified that
             // there's enough space in the char buffer, so we can proceed without

@@ -219,8 +219,7 @@ namespace System
         {
             Span<char> buffer = stackalloc char[66]; // Longest possible string length for an integer in binary notation with prefix
 
-            if (radix < MinRadix || radix > MaxRadix)
-                throw new ArgumentException(SR.Arg_InvalidBase, nameof(radix));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(radix, MinRadix, MaxRadix);
 
             // If the number is negative, make it positive and remember the sign.
             // If the number is MIN_VALUE, this will still be negative, so we'll have to
@@ -359,8 +358,7 @@ namespace System
         {
             Span<char> buffer = stackalloc char[67]; // Longest possible string length for an integer in binary notation with prefix
 
-            if (radix < MinRadix || radix > MaxRadix)
-                throw new ArgumentException(SR.Arg_InvalidBase, nameof(radix));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(radix, MinRadix, MaxRadix);
 
             // If the number is negative, make it positive and remember the sign.
             ulong ul;

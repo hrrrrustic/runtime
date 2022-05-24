@@ -296,10 +296,7 @@ namespace System.Security.Cryptography
             // Versions 1, 2, and 3 are defined.
             // 1 is just data, 2 and 3 mean that a seed is required (with different reasons for why,
             // but they're human-reasons, not technical ones).
-            if (specifiedParameters.Version < 1 || specifiedParameters.Version > 3)
-            {
-                throw new CryptographicException(SR.Cryptography_Der_Invalid_Encoding);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(specifiedParameters.Version, 1, 3);
 
             if (specifiedParameters.Version > 1 && !specifiedParameters.Curve.Seed.HasValue)
             {

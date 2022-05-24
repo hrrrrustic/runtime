@@ -66,8 +66,7 @@ namespace System.Data.SqlTypes
         /// </summary>
         public SqlMoney(long value)
         {
-            if (value < s_minLong || value > s_maxLong)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(value, s_minLong, s_maxLong);
             _value = value * s_lTickBase;
             _fNotNull = true;
         }

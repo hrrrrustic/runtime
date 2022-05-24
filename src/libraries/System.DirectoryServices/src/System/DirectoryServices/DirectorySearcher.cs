@@ -273,8 +273,7 @@ namespace System.DirectoryServices
             get => _scope;
             set
             {
-                if (value < SearchScope.Base || value > SearchScope.Subtree)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(SearchScope));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
 
                 // user explicitly set SearchScope to something other than Base and also want to do ASQ, it is not supported
                 if (_attributeScopeQuerySpecified == true && value != SearchScope.Base)
@@ -449,8 +448,7 @@ namespace System.DirectoryServices
             get => _derefAlias;
             set
             {
-                if (value < DereferenceAlias.Never || value > DereferenceAlias.Always)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(DereferenceAlias));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
 
                 _derefAlias = value;
             }
@@ -484,8 +482,7 @@ namespace System.DirectoryServices
             get => _extendedDN;
             set
             {
-                if (value < ExtendedDN.None || value > ExtendedDN.Standard)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(ExtendedDN));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDN.None, ExtendedDN.Standard);
 
                 _extendedDN = value;
             }

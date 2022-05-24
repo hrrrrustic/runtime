@@ -252,10 +252,7 @@ namespace System.DirectoryServices.Protocols
             get => _directoryScope;
             set
             {
-                if (value < SearchScope.Base || value > SearchScope.Subtree)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(SearchScope));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
 
                 _directoryScope = value;
             }
@@ -266,10 +263,7 @@ namespace System.DirectoryServices.Protocols
             get => _directoryRefAlias;
             set
             {
-                if (value < DereferenceAlias.Never || value > DereferenceAlias.Always)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(DereferenceAlias));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
 
                 _directoryRefAlias = value;
             }

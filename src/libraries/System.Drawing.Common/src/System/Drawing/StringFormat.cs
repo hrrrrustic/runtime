@@ -174,10 +174,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < StringAlignment.Near || value > StringAlignment.Far)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(StringAlignment));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringAlignment.Near, StringAlignment.Far);
 
                 int status = Gdip.GdipSetStringFormatAlign(new HandleRef(this, nativeFormat), value);
 
@@ -204,10 +201,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < 0 || value > StringAlignment.Far)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(StringAlignment));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, 0, StringAlignment.Far);
 
                 int status = Gdip.GdipSetStringFormatLineAlign(new HandleRef(this, nativeFormat), value);
 
@@ -233,10 +227,7 @@ namespace System.Drawing
             }
             set
             {
-                if (value < HotkeyPrefix.None || value > HotkeyPrefix.Hide)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(HotkeyPrefix));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, HotkeyPrefix.None, HotkeyPrefix.Hide);
 
                 int status = Gdip.GdipSetStringFormatHotkeyPrefix(new HandleRef(this, nativeFormat), value);
 
@@ -312,10 +303,7 @@ namespace System.Drawing
 
             set
             {
-                if (value < StringTrimming.None || value > StringTrimming.EllipsisPath)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(StringTrimming));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringTrimming.None, StringTrimming.EllipsisPath);
 
                 int status = Gdip.GdipSetStringFormatTrimming(new HandleRef(this, nativeFormat), value);
 

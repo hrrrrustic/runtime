@@ -214,10 +214,7 @@ namespace System.Resources
                 r = ReadUnalignedI4(&_namePositionsPtr[index]);
             }
 
-            if (r < 0 || r > _dataSectionOffset - _nameSectionOffset)
-            {
-                throw new FormatException(SR.Format(SR.BadImageFormat_ResourcesNameInvalidOffset, r));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(r, 0, _dataSectionOffset - _nameSectionOffset);
             return r;
         }
 

@@ -62,10 +62,7 @@ namespace System.IO.MemoryMappedFiles
         {
             ArgumentException.ThrowIfNullOrEmpty(mapName);
 
-            if (inheritability < HandleInheritability.None || inheritability > HandleInheritability.Inheritable)
-            {
-                throw new ArgumentOutOfRangeException(nameof(inheritability));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             if (((int)desiredAccessRights & ~((int)(MemoryMappedFileRights.FullControl | MemoryMappedFileRights.AccessSystemSecurity))) != 0)
             {
@@ -115,11 +112,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(capacity);
 
-            if (access < MemoryMappedFileAccess.ReadWrite ||
-                access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (mode == FileMode.Append)
             {
@@ -202,21 +195,14 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentException(SR.Argument_EmptyFile);
             }
 
-            if (access < MemoryMappedFileAccess.ReadWrite ||
-                access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (access == MemoryMappedFileAccess.Write)
             {
                 throw new ArgumentException(SR.Argument_NewMMFWriteAccessNotAllowed, nameof(access));
             }
 
-            if (inheritability < HandleInheritability.None || inheritability > HandleInheritability.Inheritable)
-            {
-                throw new ArgumentOutOfRangeException(nameof(inheritability));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             // flush any bytes written to the FileStream buffer so that we can see them in our MemoryMappedFile
             fileStream.Flush();
@@ -263,11 +249,7 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(capacity), SR.ArgumentOutOfRange_CapacityLargerThanLogicalAddressSpaceNotAllowed);
             }
 
-            if (access < MemoryMappedFileAccess.ReadWrite ||
-                access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (access == MemoryMappedFileAccess.Write)
             {
@@ -279,10 +261,7 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(options));
             }
 
-            if (inheritability < HandleInheritability.None || inheritability > HandleInheritability.Inheritable)
-            {
-                throw new ArgumentOutOfRangeException(nameof(inheritability));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             SafeMemoryMappedFileHandle handle = CreateCore(null, mapName, inheritability, access, options, capacity, -1);
             return new MemoryMappedFile(handle);
@@ -320,21 +299,14 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(capacity), SR.ArgumentOutOfRange_CapacityLargerThanLogicalAddressSpaceNotAllowed);
             }
 
-            if (access < MemoryMappedFileAccess.ReadWrite ||
-                access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (((int)options & ~((int)(MemoryMappedFileOptions.DelayAllocatePages))) != 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(options));
             }
 
-            if (inheritability < HandleInheritability.None || inheritability > HandleInheritability.Inheritable)
-            {
-                throw new ArgumentOutOfRangeException(nameof(inheritability));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             SafeMemoryMappedFileHandle handle;
             // special case for write access; create will never succeed
@@ -366,10 +338,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(size);
 
-            if (access < MemoryMappedFileAccess.ReadWrite || access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (IntPtr.Size == 4 && size > uint.MaxValue)
             {
@@ -397,10 +366,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(size);
 
-            if (access < MemoryMappedFileAccess.ReadWrite || access > MemoryMappedFileAccess.ReadWriteExecute)
-            {
-                throw new ArgumentOutOfRangeException(nameof(access));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (IntPtr.Size == 4 && size > uint.MaxValue)
             {

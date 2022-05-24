@@ -117,10 +117,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public DirectoryContext(DirectoryContextType contextType, string name)
         {
-            if (contextType < DirectoryContextType.Domain || contextType > DirectoryContextType.ApplicationPartition)
-            {
-                throw new InvalidEnumArgumentException(nameof(contextType), (int)contextType, typeof(DirectoryContextType));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(contextType, DirectoryContextType.Domain, DirectoryContextType.ApplicationPartition);
 
             if (name == null)
             {
@@ -151,10 +148,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public DirectoryContext(DirectoryContextType contextType, string name, string? username, string? password)
         {
-            if (contextType < DirectoryContextType.Domain || contextType > DirectoryContextType.ApplicationPartition)
-            {
-                throw new InvalidEnumArgumentException(nameof(contextType), (int)contextType, typeof(DirectoryContextType));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(contextType, DirectoryContextType.Domain, DirectoryContextType.ApplicationPartition);
 
             if (name == null)
             {

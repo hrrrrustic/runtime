@@ -38,10 +38,7 @@ namespace System.Drawing.Printing
             get => _kind;
             set
             {
-                if (value < PrinterResolutionKind.High || value > PrinterResolutionKind.Custom)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), unchecked((int)value), typeof(PrinterResolutionKind));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PrinterResolutionKind.High, PrinterResolutionKind.Custom);
 
                 _kind = value;
             }

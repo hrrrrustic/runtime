@@ -121,8 +121,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (sourceServer == null)
                 throw new ArgumentNullException(nameof(sourceServer));
 
-            if (transport < ActiveDirectoryTransportType.Rpc || transport > ActiveDirectoryTransportType.Smtp)
-                throw new InvalidEnumArgumentException("value", (int)transport, typeof(ActiveDirectoryTransportType));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
 
             //  work with copy of the context
             context = new DirectoryContext(context);
@@ -555,8 +554,7 @@ namespace System.DirectoryServices.ActiveDirectory
                 if (_disposed)
                     throw new ObjectDisposedException(GetType().Name);
 
-                if (value < NotificationStatus.NoNotification || value > NotificationStatus.NotificationAlways)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(NotificationStatus));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, NotificationStatus.NoNotification, NotificationStatus.NotificationAlways);
 
                 try
                 {

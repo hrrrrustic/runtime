@@ -36,8 +36,7 @@ namespace System.Drawing.Drawing2D
 
         public LinearGradientBrush(RectangleF rect, Color color1, Color color2, LinearGradientMode linearGradientMode)
         {
-            if (linearGradientMode < LinearGradientMode.Horizontal || linearGradientMode > LinearGradientMode.BackwardDiagonal)
-                throw new InvalidEnumArgumentException(nameof(linearGradientMode), unchecked((int)linearGradientMode), typeof(LinearGradientMode));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
 
             if (rect.Width == 0.0 || rect.Height == 0.0)
                 throw new ArgumentException(SR.Format(SR.GdiplusInvalidRectangle, rect.ToString()));
@@ -55,8 +54,7 @@ namespace System.Drawing.Drawing2D
 
         public LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode linearGradientMode)
         {
-            if (linearGradientMode < LinearGradientMode.Horizontal || linearGradientMode > LinearGradientMode.BackwardDiagonal)
-                throw new InvalidEnumArgumentException(nameof(linearGradientMode), unchecked((int)linearGradientMode), typeof(LinearGradientMode));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
             if (rect.Width == 0 || rect.Height == 0)
                 throw new ArgumentException(SR.Format(SR.GdiplusInvalidRectangle, rect.ToString()));
 
@@ -282,10 +280,8 @@ namespace System.Drawing.Drawing2D
 
         public void SetSigmaBellShape(float focus, float scale)
         {
-            if (focus < 0 || focus > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(focus));
-            if (scale < 0 || scale > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(scale));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(focus, 0, 1);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(scale, 0, 1);
 
             Gdip.CheckStatus(Gdip.GdipSetLineSigmaBlend(new HandleRef(this, NativeBrush), focus, scale));
         }
@@ -294,10 +290,8 @@ namespace System.Drawing.Drawing2D
 
         public void SetBlendTriangularShape(float focus, float scale)
         {
-            if (focus < 0 || focus > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(focus));
-            if (scale < 0 || scale > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(scale));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(focus, 0, 1);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(scale, 0, 1);
 
             Gdip.CheckStatus(Gdip.GdipSetLineLinearBlend(new HandleRef(this, NativeBrush), focus, scale));
 
@@ -445,8 +439,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                if (value < WrapMode.Tile || value > WrapMode.Clamp)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(WrapMode));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 Gdip.CheckStatus(Gdip.GdipSetLineWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value)));
             }

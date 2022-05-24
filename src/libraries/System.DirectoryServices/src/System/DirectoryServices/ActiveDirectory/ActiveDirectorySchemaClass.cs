@@ -970,10 +970,7 @@ namespace System.DirectoryServices.ActiveDirectory
                 CheckIfDisposed();
 
                 // validate the value that is being set
-                if (value < SchemaClassType.Type88 || value > SchemaClassType.Auxiliary)
-                {
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(SchemaClassType));
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SchemaClassType.Type88, SchemaClassType.Auxiliary);
 
                 if (isBound)
                 {

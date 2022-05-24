@@ -1121,10 +1121,7 @@ namespace System.Threading
         private static int ToTimeoutMilliseconds(TimeSpan timeout)
         {
             var timeoutMilliseconds = (long)timeout.TotalMilliseconds;
-            if (timeoutMilliseconds < -1 || timeoutMilliseconds > int.MaxValue)
-            {
-                throw GetInvalidTimeoutException(nameof(timeout));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(timeoutMilliseconds, -1, int.MaxValue);
             return (int)timeoutMilliseconds;
         }
 

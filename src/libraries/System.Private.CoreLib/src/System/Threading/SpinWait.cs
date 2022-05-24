@@ -280,11 +280,7 @@ namespace System.Threading
         {
             // Validate the timeout
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(
-                    nameof(timeout), timeout, SR.SpinWait_SpinUntil_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
 
             // Call wait with the timeout milliseconds
             return SpinUntil(condition, (int)totalMilliseconds);

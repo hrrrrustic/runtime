@@ -341,10 +341,7 @@ namespace System.DirectoryServices.ActiveDirectory
         {
             CheckIfDisposed();
 
-            if (role < ActiveDirectoryRole.SchemaRole || role > ActiveDirectoryRole.InfrastructureRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(ActiveDirectoryRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, ActiveDirectoryRole.SchemaRole, ActiveDirectoryRole.InfrastructureRole);
 
             try
             {

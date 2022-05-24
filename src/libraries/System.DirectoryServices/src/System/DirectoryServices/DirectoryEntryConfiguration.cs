@@ -84,8 +84,7 @@ namespace System.DirectoryServices
             }
             set
             {
-                if (value < PasswordEncodingMethod.PasswordEncodingSsl || value > PasswordEncodingMethod.PasswordEncodingClear)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(PasswordEncodingMethod));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PasswordEncodingMethod.PasswordEncodingSsl, PasswordEncodingMethod.PasswordEncodingClear);
 
                 ((UnsafeNativeMethods.IAdsObjectOptions)_entry.AdsObject).SetOption((int)AdsOptions.ADS_OPTION_PASSWORD_METHOD, value);
             }

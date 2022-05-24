@@ -148,11 +148,7 @@ namespace System.Threading
         /// <paramref name="maxCount"/> is less than 0.</exception>
         public SemaphoreSlim(int initialCount, int maxCount)
         {
-            if (initialCount < 0 || initialCount > maxCount)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(initialCount), initialCount, SR.SemaphoreSlim_ctor_InitialCountWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(initialCount, 0, maxCount);
 
             // validate input
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(maxCount);
@@ -211,11 +207,7 @@ namespace System.Threading
         {
             // Validate the timeout
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(
-                    nameof(timeout), timeout, SR.SemaphoreSlim_Wait_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
 
             // Call wait with the timeout milliseconds
             return Wait((int)timeout.TotalMilliseconds, CancellationToken.None);
@@ -242,11 +234,7 @@ namespace System.Threading
         {
             // Validate the timeout
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(
-                    nameof(timeout), timeout, SR.SemaphoreSlim_Wait_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
 
             // Call wait with the timeout milliseconds
             return Wait((int)timeout.TotalMilliseconds, cancellationToken);
@@ -559,11 +547,7 @@ namespace System.Threading
         {
             // Validate the timeout
             long totalMilliseconds = (long)timeout.TotalMilliseconds;
-            if (totalMilliseconds < -1 || totalMilliseconds > int.MaxValue)
-            {
-                throw new System.ArgumentOutOfRangeException(
-                    nameof(timeout), timeout, SR.SemaphoreSlim_Wait_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(totalMilliseconds, -1, int.MaxValue);
 
             // Call wait with the timeout milliseconds
             return WaitAsync((int)timeout.TotalMilliseconds, cancellationToken);

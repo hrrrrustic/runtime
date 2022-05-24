@@ -116,8 +116,7 @@ namespace System.Xml.Xsl.Qil
 
         public override void Insert(int index, QilNode node)
         {
-            if (index < 0 || index > _count)
-                throw new IndexOutOfRangeException();
+            ArgumentOutOfRangeException.ThrowIfNotBetween(index, 0, _count);
 
             if (_count == _members.Length)
             {

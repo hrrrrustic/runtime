@@ -133,10 +133,7 @@ namespace System.Globalization
 
         internal static void CheckAddResult(long ticks, DateTime minValue, DateTime maxValue)
         {
-            if (ticks < minValue.Ticks || ticks > maxValue.Ticks)
-            {
-                throw new ArgumentException(SR.Format(SR.Argument_ResultCalendarRange, minValue, maxValue));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(ticks, minValue.Ticks, maxValue.Ticks);
         }
 
         internal DateTime Add(DateTime time, double value, int scale)
@@ -497,13 +494,7 @@ namespace System.Globalization
         /// </summary>
         public virtual int GetWeekOfYear(DateTime time, CalendarWeekRule rule, DayOfWeek firstDayOfWeek)
         {
-            if (firstDayOfWeek < DayOfWeek.Sunday || firstDayOfWeek > DayOfWeek.Saturday)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(firstDayOfWeek),
-                    firstDayOfWeek,
-                    SR.Format(SR.ArgumentOutOfRange_Range, DayOfWeek.Sunday, DayOfWeek.Saturday));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(firstDayOfWeek, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
             return rule switch
             {

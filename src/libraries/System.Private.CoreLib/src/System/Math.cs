@@ -1325,10 +1325,7 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(digits), SR.ArgumentOutOfRange_RoundingDigits);
             }
 
-            if (mode < MidpointRounding.ToEven || mode > MidpointRounding.ToPositiveInfinity)
-            {
-                throw new ArgumentException(SR.Format(SR.Argument_InvalidEnumValue, mode, nameof(MidpointRounding)), nameof(mode));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(mode, MidpointRounding.ToEven, MidpointRounding.ToPositiveInfinity);
 
             if (Abs(value) < doubleRoundLimit)
             {

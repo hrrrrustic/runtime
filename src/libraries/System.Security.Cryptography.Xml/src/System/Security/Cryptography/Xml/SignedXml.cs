@@ -443,8 +443,7 @@ namespace System.Security.Cryptography.Xml
             else
                 signatureLength = Convert.ToInt32(m_signature.SignedInfo.SignatureLength, null);
             // signatureLength should be less than hash size
-            if (signatureLength < 0 || signatureLength > hash.HashSize)
-                throw new CryptographicException(SR.Cryptography_Xml_InvalidSignatureLength);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(signatureLength, 0, hash.HashSize);
             if (signatureLength % 8 != 0)
                 throw new CryptographicException(SR.Cryptography_Xml_InvalidSignatureLength2);
 
@@ -1051,8 +1050,7 @@ namespace System.Security.Cryptography.Xml
                 signatureLength = Convert.ToInt32(m_signature.SignedInfo.SignatureLength, null);
 
             // signatureLength should be less than hash size
-            if (signatureLength < 0 || signatureLength > macAlg.HashSize)
-                throw new CryptographicException(SR.Cryptography_Xml_InvalidSignatureLength);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(signatureLength, 0, macAlg.HashSize);
             if (signatureLength % 8 != 0)
                 throw new CryptographicException(SR.Cryptography_Xml_InvalidSignatureLength2);
             if (m_signature.SignatureValue == null)

@@ -32,8 +32,7 @@ namespace System.Text
             ArgumentOutOfRangeException.ThrowIfNegative(byteIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(byteIndex, bytes.Length);
             int byteCount = GetByteCount(chars, charIndex, charCount);
-            if (byteCount < 0 || byteCount > bytes.Length - byteIndex)
-                throw new ArgumentException(SR.XmlArrayTooSmall, nameof(bytes));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(byteCount, 0, bytes.Length - byteIndex);
             if (charCount > 0)
             {
                 if (!HexConverter.TryDecodeFromUtf16(chars.AsSpan(charIndex, charCount), bytes.AsSpan(byteIndex, byteCount), out int charsProcessed))
@@ -47,8 +46,7 @@ namespace System.Text
 
         public override int GetMaxCharCount(int byteCount)
         {
-            if (byteCount < 0 || byteCount > int.MaxValue / 2)
-                throw new ArgumentOutOfRangeException(nameof(byteCount), SR.Format(SR.ValueMustBeInRange, 0, int.MaxValue / 2));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(byteCount, 0, int.MaxValue / 2);
             return byteCount * 2;
         }
 
@@ -68,8 +66,7 @@ namespace System.Text
             ArgumentNullException.ThrowIfNull(chars);
             ArgumentOutOfRangeException.ThrowIfNegative(charIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(charIndex, chars.Length);
-            if (charCount < 0 || charCount > chars.Length - charIndex)
-                throw new ArgumentException(SR.XmlArrayTooSmall, nameof(chars));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(charCount, 0, chars.Length - charIndex);
             if (byteCount > 0)
             {
                 HexConverter.EncodeToUtf16(bytes.AsSpan(byteIndex, byteCount), chars.AsSpan(charIndex));

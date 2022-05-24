@@ -87,10 +87,7 @@ namespace System.Formats.Tar
                 SeekOrigin.End => _endInSuperStream + offset,
                 _ => throw new ArgumentOutOfRangeException(nameof(origin)),
             };
-            if (newPosition < _startInSuperStream || newPosition > _endInSuperStream)
-            {
-                throw new IndexOutOfRangeException(nameof(offset));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(newPosition, _startInSuperStream, _endInSuperStream);
 
             _superStream.Position = newPosition;
             _positionInSuperStream = newPosition;

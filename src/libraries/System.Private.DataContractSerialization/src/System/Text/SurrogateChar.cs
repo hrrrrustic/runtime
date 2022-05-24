@@ -22,8 +22,7 @@ namespace System.Text
 
         public SurrogateChar(int ch)
         {
-            if (ch < MinValue || ch > MaxValue)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(SR.Format(SR.XmlInvalidSurrogate, ch.ToString("X", CultureInfo.InvariantCulture)), nameof(ch)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(ch, MinValue, MaxValue);
 
             const int mask = ((1 << 10) - 1);
 
@@ -33,11 +32,9 @@ namespace System.Text
 
         public SurrogateChar(char lowChar, char highChar)
         {
-            if (lowChar < surLowMin || lowChar > surLowMax)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(SR.Format(SR.XmlInvalidLowSurrogate, ((int)lowChar).ToString("X", CultureInfo.InvariantCulture)), nameof(lowChar)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(lowChar, surLowMin, surLowMax);
 
-            if (highChar < surHighMin || highChar > surHighMax)
-                throw System.Runtime.Serialization.DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(SR.Format(SR.XmlInvalidHighSurrogate, ((int)highChar).ToString("X", CultureInfo.InvariantCulture)), nameof(highChar)));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(highChar, surHighMin, surHighMax);
 
             _lowChar = lowChar;
             _highChar = highChar;

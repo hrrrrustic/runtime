@@ -19,10 +19,7 @@ namespace System
 
             // if (!Enum.IsDefined(typeof(UriKind), uriKind)) -- We currently believe that Enum.IsDefined() is too slow
             // to be used here.
-            if ((int)uriKind < (int)UriKind.RelativeOrAbsolute || (int)uriKind > (int)UriKind.Relative)
-            {
-                throw new ArgumentException(SR.Format(SR.net_uri_InvalidUriKind, uriKind));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween((int)uriKind, (int)UriKind.RelativeOrAbsolute, (int)UriKind.Relative);
 
             _string = uri ?? string.Empty;
 
@@ -625,10 +622,7 @@ namespace System
         {
             // if (!Enum.IsDefined(typeof(UriKind), uriKind)) -- We currently believe that Enum.IsDefined() is too slow
             // to be used here.
-            if ((int)uriKind < (int)UriKind.RelativeOrAbsolute || (int)uriKind > (int)UriKind.Relative)
-            {
-                throw new ArgumentException(SR.Format(SR.net_uri_InvalidUriKind, uriKind));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween((int)uriKind, (int)UriKind.RelativeOrAbsolute, (int)UriKind.Relative);
 
             UriParser? syntax = null;
             Flags flags = Flags.Zero;

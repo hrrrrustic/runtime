@@ -112,8 +112,7 @@ namespace System.Security.Principal
 
         public virtual bool IsInRole(WindowsBuiltInRole role)
         {
-            if (role < WindowsBuiltInRole.Administrator || role > WindowsBuiltInRole.Replicator)
-                throw new ArgumentException(SR.Format(SR.Arg_EnumIllegalVal, (int)role), nameof(role));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, WindowsBuiltInRole.Administrator, WindowsBuiltInRole.Replicator);
 
             return IsInRole((int)role);
         }

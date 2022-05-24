@@ -17,8 +17,7 @@ namespace System.Drawing.Drawing2D
         {
             ArgumentNullException.ThrowIfNull(points);
 
-            if (wrapMode < WrapMode.Tile || wrapMode > WrapMode.Clamp)
-                throw new InvalidEnumArgumentException(nameof(wrapMode), unchecked((int)wrapMode), typeof(WrapMode));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             // GdipCreatePathGradient returns InsufficientBuffer for less than 3 points, which we turn into
             // OutOfMemoryException(). We used to copy nothing into an empty native buffer for zero points,
@@ -41,8 +40,7 @@ namespace System.Drawing.Drawing2D
         {
             ArgumentNullException.ThrowIfNull(points);
 
-            if (wrapMode < WrapMode.Tile || wrapMode > WrapMode.Clamp)
-                throw new InvalidEnumArgumentException(nameof(wrapMode), unchecked((int)wrapMode), typeof(WrapMode));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             // GdipCreatePathGradient returns InsufficientBuffer for less than 3 points, which we turn into
             // OutOfMemoryException(). We used to copy nothing into an empty native buffer for zero points,
@@ -234,10 +232,8 @@ namespace System.Drawing.Drawing2D
 
         public void SetSigmaBellShape(float focus, float scale)
         {
-            if (focus < 0 || focus > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(focus));
-            if (scale < 0 || scale > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(scale));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(focus, 0, 1);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(scale, 0, 1);
 
             Gdip.CheckStatus(Gdip.GdipSetPathGradientSigmaBlend(new HandleRef(this, NativeBrush), focus, scale));
         }
@@ -246,10 +242,8 @@ namespace System.Drawing.Drawing2D
 
         public void SetBlendTriangularShape(float focus, float scale)
         {
-            if (focus < 0 || focus > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(focus));
-            if (scale < 0 || scale > 1)
-                throw new ArgumentException(SR.GdiplusInvalidParameter, nameof(scale));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(focus, 0, 1);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(scale, 0, 1);
 
             Gdip.CheckStatus(Gdip.GdipSetPathGradientLinearBlend(new HandleRef(this, NativeBrush), focus, scale));
         }
@@ -398,8 +392,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                if (value < WrapMode.Tile || value > WrapMode.Clamp)
-                    throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(WrapMode));
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 Gdip.CheckStatus(Gdip.GdipSetPathGradientWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value)));
             }

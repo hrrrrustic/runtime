@@ -22,10 +22,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public bool Contains(ActiveDirectoryRole role)
         {
-            if (role < ActiveDirectoryRole.SchemaRole || role > ActiveDirectoryRole.InfrastructureRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(ActiveDirectoryRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, ActiveDirectoryRole.SchemaRole, ActiveDirectoryRole.InfrastructureRole);
 
             for (int i = 0; i < InnerList.Count; i++)
             {
@@ -40,10 +37,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public int IndexOf(ActiveDirectoryRole role)
         {
-            if (role < ActiveDirectoryRole.SchemaRole || role > ActiveDirectoryRole.InfrastructureRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(ActiveDirectoryRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, ActiveDirectoryRole.SchemaRole, ActiveDirectoryRole.InfrastructureRole);
 
             for (int i = 0; i < InnerList.Count; i++)
             {
@@ -80,10 +74,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public bool Contains(AdamRole role)
         {
-            if (role < AdamRole.SchemaRole || role > AdamRole.NamingRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(AdamRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, AdamRole.SchemaRole, AdamRole.NamingRole);
 
             for (int i = 0; i < InnerList.Count; i++)
             {
@@ -98,10 +89,7 @@ namespace System.DirectoryServices.ActiveDirectory
 
         public int IndexOf(AdamRole role)
         {
-            if (role < AdamRole.SchemaRole || role > AdamRole.NamingRole)
-            {
-                throw new InvalidEnumArgumentException(nameof(role), (int)role, typeof(AdamRole));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(role, AdamRole.SchemaRole, AdamRole.NamingRole);
 
             for (int i = 0; i < InnerList.Count; i++)
             {

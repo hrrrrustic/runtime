@@ -1020,15 +1020,13 @@ namespace System.Diagnostics
         {
             string currentMachineName = this.machineName;
 
-            if (action < OverflowAction.DoNotOverwrite || action > OverflowAction.OverwriteOlder)
-                throw new InvalidEnumArgumentException(nameof(action), (int)action, typeof(OverflowAction));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(action, OverflowAction.DoNotOverwrite, OverflowAction.OverwriteOlder);
             // this is a long because in the if statement we may need to store values as
             // large as UInt32.MaxValue - 1.  This would overflow an int.
             long retentionvalue = (long)action;
             if (action == OverflowAction.OverwriteOlder)
             {
-                if (retentionDays < 1 || retentionDays > 365)
-                    throw new ArgumentOutOfRangeException(SR.RentionDaysOutOfRange);
+                ArgumentOutOfRangeException.ThrowIfNotBetween(retentionDays, 1, 365);
 
                 retentionvalue = (long)retentionDays * SecondsPerDay;
             }
@@ -1286,9 +1284,7 @@ namespace System.Diagnostics
         public void WriteEntry(string message, EventLogEntryType type, int eventID, short category,
                                byte[] rawData)
         {
-            if (eventID < 0 || eventID > ushort.MaxValue)
-
-                throw new ArgumentException(SR.Format(SR.EventID, eventID.ToString(), 0, ushort.MaxValue));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(eventID, 0, ushort.MaxValue);
 
             if (Source.Length == 0)
                 throw new ArgumentException(SR.NeedSourceToWrite);

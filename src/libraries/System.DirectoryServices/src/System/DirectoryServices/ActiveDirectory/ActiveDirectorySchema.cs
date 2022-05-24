@@ -261,10 +261,7 @@ namespace System.DirectoryServices.ActiveDirectory
             CheckIfDisposed();
 
             // validate the type
-            if (type < SchemaClassType.Type88 || type > SchemaClassType.Auxiliary)
-            {
-                throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(SchemaClassType));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(type, SchemaClassType.Type88, SchemaClassType.Auxiliary);
 
             string filter = "(&(" + PropertyManager.ObjectCategory + "=classSchema)" +
                             "(" + PropertyManager.ObjectClassCategory + "=" + (int)type + ")" +
