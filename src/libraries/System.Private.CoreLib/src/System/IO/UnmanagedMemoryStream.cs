@@ -157,8 +157,9 @@ namespace System.IO
         {
             ArgumentNullException.ThrowIfNull(pointer);
 
-            if (length < 0 || capacity < 0)
-                throw new ArgumentOutOfRangeException((length < 0) ? nameof(length) : nameof(capacity), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(length);
+
+            ArgumentOutOfRangeException.ThrowIfNegative(capacity);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(length, capacity);
             // Check for wraparound.
             ArgumentOutOfRangeException.ThrowIfLessThan(((byte*)((long)pointer + capacity)), pointer);
