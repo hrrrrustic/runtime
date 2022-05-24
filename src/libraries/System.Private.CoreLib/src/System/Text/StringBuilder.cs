@@ -147,10 +147,7 @@ namespace System.Text
         public StringBuilder(int capacity, int maxCapacity)
         {
             ArgumentOutOfRangeException.ThrowIfGreaterThan(capacity, maxCapacity);
-            if (maxCapacity < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(maxCapacity), SR.ArgumentOutOfRange_SmallMaxCapacity);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(maxCapacity, 1);
             ArgumentOutOfRangeException.ThrowIfNegative(capacity);
 
             if (capacity == 0)

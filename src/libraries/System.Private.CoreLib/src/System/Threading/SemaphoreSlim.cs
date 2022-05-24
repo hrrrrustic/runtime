@@ -763,11 +763,7 @@ namespace System.Threading
         {
             CheckDispose();
 
-            if (releaseCount < 1)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(releaseCount), releaseCount, SR.SemaphoreSlim_Release_CountWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(releaseCount, 1);
             int returnCount;
 
             lock (m_lockObjAndDisposed)

@@ -418,11 +418,7 @@ namespace System.Threading
         {
             ThrowIfDisposed();
 
-            if (participantCount < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(participantCount), participantCount,
-                    SR.Barrier_RemoveParticipants_NonPositive_ArgumentOutOfRange);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(participantCount, 1);
 
             // in case of this is called from the PHA
             if (_actionCallerID != 0 && Environment.CurrentManagedThreadId == _actionCallerID)
