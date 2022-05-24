@@ -299,6 +299,7 @@ namespace System
         public ArgumentOutOfRangeException(string? paramName, object? actualValue, string? message) { }
         public ArgumentOutOfRangeException(string? paramName, string? message) { }
         public static void ThrowIfNegative<T>(T value, [System.Runtime.CompilerServices.CallerArgumentExpression("value")] string? paramName = null) where T : struct, System.Numerics.INumberBase<T>, System.Numerics.ISignedNumber<T>, System.Numerics.IComparisonOperators<T, T> {}
+        public static void ThrowIfNegativeOrZero<T>(T value, [System.Runtime.CompilerServices.CallerArgumentExpression("value")] string? paramName = null) where T : struct, System.Numerics.INumberBase<T>, System.Numerics.ISignedNumber<T>, System.Numerics.IComparisonOperators<T, T> {}
         public virtual object? ActualValue { get { throw null; } }
         public override string Message { get { throw null; } }
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
