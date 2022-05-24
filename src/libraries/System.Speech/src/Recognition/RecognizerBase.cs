@@ -936,7 +936,7 @@ ISpGrammarResourceLoader
             get { lock (SapiRecognizer) { return _initialSilenceTimeout; } }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfLessThan(value, TimeSpan.Zero);
+                //ArgumentOutOfRangeException.ThrowIfLessThan(value, TimeSpan.Zero);
 
                 lock (SapiRecognizer)
                 {
@@ -955,7 +955,7 @@ ISpGrammarResourceLoader
             get { lock (SapiRecognizer) { return _babbleTimeout; } }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfLessThan(value, TimeSpan.Zero);
+                //ArgumentOutOfRangeException.ThrowIfLessThan(value, TimeSpan.Zero);
 
                 lock (SapiRecognizer)
                 {

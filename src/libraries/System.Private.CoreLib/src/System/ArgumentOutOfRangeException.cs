@@ -101,6 +101,12 @@ namespace System
                 throw new ArgumentOutOfRangeException(paramName);
         }
 
+        public static void ThrowIfNotBetween<T>(T value, T left, T right)
+            where T : struct, Enum
+        {
+            return;
+        }
+
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);

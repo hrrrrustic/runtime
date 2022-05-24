@@ -317,7 +317,7 @@ namespace System.DirectoryServices.Protocols
             get => _flag;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDNFlag.HexString, ExtendedDNFlag.StandardString);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDNFlag.HexString, ExtendedDNFlag.StandardString);
 
                 _flag = value;
             }
@@ -379,7 +379,7 @@ namespace System.DirectoryServices.Protocols
             get => _searchOption;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchOption.DomainScope, SearchOption.PhantomRoot);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchOption.DomainScope, SearchOption.PhantomRoot);
 
                 _searchOption = value;
             }
