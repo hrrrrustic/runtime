@@ -297,11 +297,9 @@ namespace System.Data.SqlTypes
             if (buffer == null)
                 throw new ArgumentNullException(nameof(buffer));
 
-            if (offset > Length || offset < 0)
-                throw new ArgumentOutOfRangeException(nameof(offset));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, Length);
 
-            if (offsetInBuffer > buffer.Length || offsetInBuffer < 0)
-                throw new ArgumentOutOfRangeException(nameof(offsetInBuffer));
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offsetInBuffer, 0, buffer.Length);
 
             ArgumentOutOfRangeException.ThrowIfNotBetween(count, 0, buffer.Length - offsetInBuffer);
 

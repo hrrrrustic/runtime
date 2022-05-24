@@ -113,10 +113,7 @@ namespace System.DirectoryServices
             get => _targetPercentage;
             set
             {
-                if (value > 100 || value < 0)
-                {
-                    throw new ArgumentException(SR.DSBadTargetPercentage);
-                }
+                ArgumentOutOfRangeException.ThrowIfNotBetween(value, 0, 100);
 
                 _targetPercentage = value;
                 _offset = _approximateTotal * _targetPercentage / 100;

@@ -176,10 +176,7 @@ namespace System.Diagnostics
         {
             int newOffset = CalculateMemoryNoBoundsCheck(oldOffset, totalSize, out alignmentAdjustment);
 
-            if (newOffset > FileView._fileMappingSize || newOffset < 0)
-            {
-                throw new InvalidOperationException(SR.CountersOOM);
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(newOffset, 0, FileView._fileMappingSize);
 
             return newOffset;
         }
@@ -1626,8 +1623,7 @@ namespace System.Diagnostics
         {
             //It is very important to check the integrity of the shared memory
             //everytime a new address is resolved.
-            if (offset > (FileView._fileMappingSize - sizeToRead) || offset < 0)
-                throw new InvalidOperationException(SR.MappingCorrupted);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, (FileView._fileMappingSize - sizeToRead));
 
             long address = _baseAddress + offset;
 
@@ -1640,8 +1636,7 @@ namespace System.Diagnostics
 
             //It is very important to check the integrity of the shared memory
             //everytime a new address is resolved.
-            if (offset > (FileView._fileMappingSize - sizeToRead) || offset < 0)
-                throw new InvalidOperationException(SR.MappingCorrupted);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(offset, 0, (FileView._fileMappingSize - sizeToRead));
 
             return offset;
         }

@@ -291,13 +291,7 @@ namespace System.Globalization
         private static void CheckHebrewYearValue(int y, int era, string varName)
         {
             CheckEraRange(era);
-            if (y > MaxHebrewYear || y < MinHebrewYear)
-            {
-                throw new ArgumentOutOfRangeException(
-                    varName,
-                    y,
-                    SR.Format(SR.ArgumentOutOfRange_Range, MinHebrewYear, MaxHebrewYear));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(y, MinHebrewYear, MaxHebrewYear);
         }
 
         /// <summary>
@@ -852,13 +846,7 @@ namespace System.Globalization
                 return base.ToFourDigitYear(year);
             }
 
-            if (year > MaxHebrewYear || year < MinHebrewYear)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(year),
-                    year,
-                    SR.Format(SR.ArgumentOutOfRange_Range, MinHebrewYear, MaxHebrewYear));
-            }
+            ArgumentOutOfRangeException.ThrowIfNotBetween(year, MinHebrewYear, MaxHebrewYear);
             return year;
         }
 

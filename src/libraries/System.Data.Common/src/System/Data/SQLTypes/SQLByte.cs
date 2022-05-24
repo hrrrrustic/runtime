@@ -195,8 +195,7 @@ namespace System.Data.SqlTypes
             if (x.IsNull)
                 return Null;
 
-            if (x.Value > byte.MaxValue || x.Value < byte.MinValue)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(x.Value, byte.MinValue, byte.MaxValue);
 
             return x.IsNull ? Null : new SqlByte((byte)(x.Value));
         }
@@ -207,8 +206,7 @@ namespace System.Data.SqlTypes
             if (x.IsNull)
                 return Null;
 
-            if (x.Value > byte.MaxValue || x.Value < byte.MinValue)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(x.Value, byte.MinValue, byte.MaxValue);
 
             return x.IsNull ? Null : new SqlByte((byte)(x.Value));
         }
@@ -219,8 +217,7 @@ namespace System.Data.SqlTypes
             if (x.IsNull)
                 return Null;
 
-            if (x.Value > byte.MaxValue || x.Value < byte.MinValue)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(x.Value, byte.MinValue, byte.MaxValue);
 
             return x.IsNull ? Null : new SqlByte((byte)(x.Value));
         }
@@ -231,8 +228,7 @@ namespace System.Data.SqlTypes
             if (x.IsNull)
                 return Null;
 
-            if (x.Value > byte.MaxValue || x.Value < byte.MinValue)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(x.Value, byte.MinValue, byte.MaxValue);
 
             return x.IsNull ? Null : new SqlByte((byte)(x.Value));
         }
@@ -243,8 +239,7 @@ namespace System.Data.SqlTypes
             if (x.IsNull)
                 return Null;
 
-            if (x.Value > byte.MaxValue || x.Value < byte.MinValue)
-                throw new OverflowException(SQLResource.ArithOverflowMessage);
+            ArgumentOutOfRangeException.ThrowIfNotBetween(x.Value, byte.MinValue, byte.MaxValue);
 
             return x.IsNull ? Null : new SqlByte((byte)(x.Value));
         }
