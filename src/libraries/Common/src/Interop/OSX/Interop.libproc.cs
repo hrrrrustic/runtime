@@ -238,16 +238,10 @@ internal static partial class Interop
         internal static unsafe proc_threadinfo? GetThreadInfoById(int pid, ulong thread)
         {
             // Negative PIDs are invalid
-            if (pid < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pid));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(pid);
 
             // Negative TIDs are invalid
-            if (thread < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(thread));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(thread);
 
             // Get the thread information for the specified thread in the specified process
             int size = sizeof(proc_threadinfo);
@@ -259,10 +253,7 @@ internal static partial class Interop
         internal static unsafe List<KeyValuePair<ulong, proc_threadinfo?>> GetAllThreadsInProcess(int pid)
         {
             // Negative PIDs are invalid
-            if (pid < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pid));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(pid);
 
             int result = 0;
             int size = 20; // start assuming 20 threads is enough

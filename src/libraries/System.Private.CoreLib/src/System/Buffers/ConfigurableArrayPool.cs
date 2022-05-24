@@ -61,16 +61,7 @@ namespace System.Buffers
             // Arrays can't be smaller than zero.  We allow requesting zero-length arrays (even though
             // pooling such an array isn't valuable) as it's a valid length array, and we want the pool
             // to be usable in general instead of using `new`, even for computed lengths.
-            if (minimumLength < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(minimumLength));
-            }
-            else if (minimumLength == 0)
-            {
-                // No need for events with the empty array.  Our pool is effectively infinite
-                // and we'll never allocate for rents and never store for returns.
-                return Array.Empty<T>();
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(minimumLength);
 
             ArrayPoolEventSource log = ArrayPoolEventSource.Log;
             T[]? buffer;

@@ -129,10 +129,7 @@ namespace System.Text
         protected Encoding(int codePage)
         {
             // Validate code page
-            if (codePage < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(codePage));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(codePage);
 
             // Remember code page
             _codePage = codePage;
@@ -147,10 +144,7 @@ namespace System.Text
         protected Encoding(int codePage, EncoderFallback? encoderFallback, DecoderFallback? decoderFallback)
         {
             // Validate code page
-            if (codePage < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(codePage));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(codePage);
 
             // Remember code page
             _codePage = codePage;
