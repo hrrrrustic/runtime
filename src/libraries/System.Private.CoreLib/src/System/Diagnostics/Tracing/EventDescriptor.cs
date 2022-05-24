@@ -63,10 +63,7 @@ namespace System.Diagnostics.Tracing
                 long keywords
                 )
         {
-            if (id < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(id), SR.ArgumentOutOfRange_NeedNonNegNum);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(id);
 
             ArgumentOutOfRangeException.ThrowIfGreaterThan(id, ushort.MaxValue);
 
@@ -78,10 +75,7 @@ namespace System.Diagnostics.Tracing
             m_opcode = opcode;
             m_keywords = keywords;
 
-            if (task < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(task), SR.ArgumentOutOfRange_NeedNonNegNum);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(task);
 
             ArgumentOutOfRangeException.ThrowIfGreaterThan(task, ushort.MaxValue);
 

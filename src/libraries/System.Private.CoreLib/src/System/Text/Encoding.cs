@@ -551,12 +551,8 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(s);
 
-            if (index < 0)
-                throw new ArgumentOutOfRangeException(nameof(index),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(index);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(index, s.Length - count);
 
             unsafe
@@ -577,9 +573,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(chars);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             char[] arrChar = new ReadOnlySpan<char>(chars, count).ToArray();
 
@@ -647,12 +641,8 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(s);
 
-            if (index < 0)
-                throw new ArgumentOutOfRangeException(nameof(index),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(index);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(index, s.Length - count);
 
             unsafe
@@ -769,9 +759,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(bytes);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count),
-                      SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             byte[] arrByte = new ReadOnlySpan<byte>(bytes, count).ToArray();
 
@@ -886,8 +874,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(bytes);
 
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteCount), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
 
             return string.CreateStringFromEncoding(bytes, byteCount, this);
         }

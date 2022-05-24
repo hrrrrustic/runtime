@@ -238,14 +238,7 @@ namespace System.Security.AccessControl
         {
             ArgumentNullException.ThrowIfNull(binaryForm);
 
-            if (offset < 0)
-            {
-                //
-                // Offset must not be negative
-                //
-
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.ArgumentOutOfRange_NeedNonNegNum);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(offset);
 
             if (binaryForm.Length - offset < HeaderLength)
             {

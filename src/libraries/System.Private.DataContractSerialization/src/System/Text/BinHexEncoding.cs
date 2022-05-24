@@ -10,8 +10,7 @@ namespace System.Text
     {
         public override int GetMaxByteCount(int charCount)
         {
-            if (charCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(charCount), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(charCount);
             if ((charCount % 2) != 0)
                 throw new FormatException(SR.Format(SR.XmlInvalidBinHexLength, charCount.ToString()));
             return charCount / 2;
@@ -25,15 +24,12 @@ namespace System.Text
         public unsafe override int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex)
         {
             ArgumentNullException.ThrowIfNull(chars);
-            if (charIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(charIndex), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(charIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(charIndex, chars.Length);
-            if (charCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(charCount), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(charCount);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(charCount, chars.Length - charIndex);
             ArgumentNullException.ThrowIfNull(bytes);
-            if (byteIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteIndex), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(byteIndex, bytes.Length);
             int byteCount = GetByteCount(chars, charIndex, charCount);
             if (byteCount < 0 || byteCount > bytes.Length - byteIndex)
@@ -64,16 +60,13 @@ namespace System.Text
         public unsafe override int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
         {
             ArgumentNullException.ThrowIfNull(bytes);
-            if (byteIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteIndex), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(byteIndex, bytes.Length);
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteCount), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(byteCount, bytes.Length - byteIndex);
             int charCount = GetCharCount(bytes, byteIndex, byteCount);
             ArgumentNullException.ThrowIfNull(chars);
-            if (charIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(charIndex), SR.ValueMustBeNonNegative);
+            ArgumentOutOfRangeException.ThrowIfNegative(charIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(charIndex, chars.Length);
             if (charCount < 0 || charCount > chars.Length - charIndex)
                 throw new ArgumentException(SR.XmlArrayTooSmall, nameof(chars));

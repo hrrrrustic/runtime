@@ -733,15 +733,9 @@ namespace System.Runtime.Serialization.Json
             if (IsAttributeValue)
             {
                 ArgumentNullException.ThrowIfNull(buffer);
-                if (offset < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
-                }
+                ArgumentOutOfRangeException.ThrowIfNegative(offset);
                 ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, buffer.Length);
-                if (count < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
-                }
+                ArgumentOutOfRangeException.ThrowIfNegative(count);
                 ArgumentOutOfRangeException.ThrowIfGreaterThan(count, buffer.Length - offset);
 
                 return 0;
@@ -755,15 +749,9 @@ namespace System.Runtime.Serialization.Json
             if (IsAttributeValue)
             {
                 ArgumentNullException.ThrowIfNull(chars);
-                if (offset < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
-                }
+                ArgumentOutOfRangeException.ThrowIfNegative(offset);
                 ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, chars.Length);
-                if (count < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
-                }
+                ArgumentOutOfRangeException.ThrowIfNegative(count);
                 ArgumentOutOfRangeException.ThrowIfGreaterThan(count, chars.Length - offset);
                 int actual;
 
@@ -792,15 +780,9 @@ namespace System.Runtime.Serialization.Json
         {
             ArgumentNullException.ThrowIfNull(buffer);
 
-            if (offset < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(offset);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, buffer.Length);
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(count, buffer.Length - offset);
             MoveToInitial(quotas, onClose);
 
@@ -833,15 +815,9 @@ namespace System.Runtime.Serialization.Json
         {
             ArgumentNullException.ThrowIfNull(array);
 
-            if (offset < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(offset);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, array.Length);
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(count, array.Length - offset);
         }
 

@@ -402,10 +402,7 @@ namespace System.Globalization
             }
 
             long lDate = GetAbsoluteDateHijri(year, month, day);
-            if (lDate < 0)
-            {
-                throw new ArgumentOutOfRangeException(null, SR.ArgumentOutOfRange_BadYearMonthDay);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(lDate);
 
             return new DateTime(lDate * GregorianCalendar.TicksPerDay + TimeToTicks(hour, minute, second, millisecond));
         }
@@ -440,10 +437,7 @@ namespace System.Globalization
 
         public override int ToFourDigitYear(int year)
         {
-            if (year < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(year);
 
             if (year < 100)
             {

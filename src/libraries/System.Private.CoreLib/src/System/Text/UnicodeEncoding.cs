@@ -125,8 +125,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(chars);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             // Call it with empty encoder
             return GetByteCount(chars, count, null);
@@ -248,8 +247,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(bytes);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             return GetCharCount(bytes, count, null);
         }
@@ -340,8 +338,7 @@ namespace System.Text
             // Check for overflow in byteCount
             // (If they were all invalid chars, this would actually be wrong,
             // but that's a ridiculously large # so we're not concerned about that case)
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_GetByteCountOverflow);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
 
             char* charStart = chars;
             char* charEnd = chars + count;
@@ -1747,9 +1744,7 @@ namespace System.Text
 
         public override int GetMaxByteCount(int charCount)
         {
-            if (charCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(charCount),
-                     SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(charCount);
 
             // Characters would be # of characters + 1 in case left over high surrogate is ? * max fallback
             long byteCount = (long)charCount + 1;
@@ -1768,9 +1763,7 @@ namespace System.Text
 
         public override int GetMaxCharCount(int byteCount)
         {
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteCount),
-                     SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
 
             // long because byteCount could be biggest int.
             // 1 char per 2 bytes.  Round up in case 1 left over in decoder.

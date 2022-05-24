@@ -85,11 +85,9 @@ namespace System
         {
             ArgumentNullException.ThrowIfNull(value);
 
-            if (startIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
+            ArgumentOutOfRangeException.ThrowIfNegative(startIndex);
 
-            if (length < 0)
-                throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_NegativeLength);
+            ArgumentOutOfRangeException.ThrowIfNegative(length);
 
             ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, value.Length - length);
 
@@ -137,11 +135,9 @@ namespace System
 
         private static unsafe string Ctor(char* ptr, int startIndex, int length)
         {
-            if (length < 0)
-                throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_NegativeLength);
+            ArgumentOutOfRangeException.ThrowIfNegative(length);
 
-            if (startIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
+            ArgumentOutOfRangeException.ThrowIfNegative(startIndex);
 
             char* pStart = ptr + startIndex;
 
@@ -187,11 +183,9 @@ namespace System
 
         private static unsafe string Ctor(sbyte* value, int startIndex, int length)
         {
-            if (startIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
+            ArgumentOutOfRangeException.ThrowIfNegative(startIndex);
 
-            if (length < 0)
-                throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_NegativeLength);
+            ArgumentOutOfRangeException.ThrowIfNegative(length);
 
             if (value == null)
             {
@@ -246,11 +240,9 @@ namespace System
             if (enc == null)
                 return new string(value, startIndex, length);
 
-            if (length < 0)
-                throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(length);
 
-            if (startIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
+            ArgumentOutOfRangeException.ThrowIfNegative(startIndex);
 
             if (value == null)
             {
@@ -391,10 +383,8 @@ namespace System
         {
             ArgumentNullException.ThrowIfNull(destination);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NegativeCount);
-            if (sourceIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(sourceIndex), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
+            ArgumentOutOfRangeException.ThrowIfNegative(sourceIndex);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(count, Length - sourceIndex);
             if (destinationIndex > destination.Length - count || destinationIndex < 0)
                 throw new ArgumentOutOfRangeException(nameof(destinationIndex), SR.ArgumentOutOfRange_IndexCount);

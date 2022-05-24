@@ -72,14 +72,8 @@ namespace System.Speech.Recognition
         // Get another audio object from this one representing a range of audio.
         public RecognizedAudio GetRange(TimeSpan audioPosition, TimeSpan duration)
         {
-            if (audioPosition.Ticks < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(audioPosition), SR.Get(SRID.NegativeTimesNotSupported));
-            }
-            if (duration.Ticks < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(duration), SR.Get(SRID.NegativeTimesNotSupported));
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(audioPosition.Ticks);
+            ArgumentOutOfRangeException.ThrowIfNegative(duration.Ticks);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(audioPosition, _audioDuration);
 
             ArgumentOutOfRangeException.ThrowIfGreaterThan(duration, audioPosition + _audioDuration);

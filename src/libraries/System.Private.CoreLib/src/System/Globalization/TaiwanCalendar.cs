@@ -179,10 +179,7 @@ namespace System.Globalization
 
         public override int ToFourDigitYear(int year)
         {
-            if (year <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(year), year, SR.ArgumentOutOfRange_NeedPosNum);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(year);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(year, _helper.MaxYear);
 
             return year;

@@ -83,8 +83,7 @@ namespace System.Text
             if (chars is null)
                 throw new ArgumentNullException(nameof(chars));
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             // Call it with empty encoder
             return GetByteCount(chars, count, null);
@@ -218,8 +217,7 @@ namespace System.Text
             if (bytes is null)
                 throw new ArgumentNullException(nameof(bytes));
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             return GetCharCount(bytes, count, null);
         }

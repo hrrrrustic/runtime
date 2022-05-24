@@ -613,10 +613,7 @@ namespace System.Runtime.Serialization
 
         public virtual object? GetObject(long objectID)
         {
-            if (objectID <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(objectID), SR.ArgumentOutOfRange_ObjectID);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(objectID);
 
             //Find the bin in which we're interested.  IObjectReference's shouldn't be returned -- the graph
             //needs to link to the objects to which they refer, not to the references themselves.
@@ -662,10 +659,7 @@ namespace System.Runtime.Serialization
         {
             ArgumentNullException.ThrowIfNull(obj);
 
-            if (objectID <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(objectID), SR.ArgumentOutOfRange_ObjectID);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(objectID);
             if (member != null && !(member is FieldInfo)) // .NET Framework checks specifically for RuntimeFieldInfo and SerializationFieldInfo, but the former is an implementation detail in corelib
             {
                 throw new SerializationException(SR.Serialization_UnknownMemberInfo);

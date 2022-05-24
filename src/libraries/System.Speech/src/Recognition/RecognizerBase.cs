@@ -1187,10 +1187,7 @@ ISpGrammarResourceLoader
             get { return _maxAlternates; }
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.Get(SRID.MaxAlternatesInvalid));
-                }
+                ArgumentOutOfRangeException.ThrowIfNegative(value);
                 if (value != _maxAlternates)
                 {
                     SapiContext.SetMaxAlternates((uint)value);

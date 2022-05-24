@@ -133,8 +133,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(chars);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             // Call it with empty encoder
             return GetByteCount(chars, count, null);
@@ -256,8 +255,7 @@ namespace System.Text
         {
             ArgumentNullException.ThrowIfNull(bytes);
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             return GetCharCount(bytes, count, null);
         }
@@ -456,8 +454,7 @@ namespace System.Text
             }
 
             // Check for overflows.
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_GetByteCountOverflow);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
 
             // Shouldn't have anything in fallback buffer for GetByteCount
             // (don't have to check _throwOnOverflow for count)
@@ -800,8 +797,7 @@ namespace System.Text
             }
 
             // Check for overflows.
-            if (charCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_GetByteCountOverflow);
+            ArgumentOutOfRangeException.ThrowIfNegative(charCount);
 
             // Shouldn't have anything in fallback buffer for GetCharCount
             // (don't have to check _throwOnOverflow for chars or count)
@@ -1054,9 +1050,7 @@ namespace System.Text
 
         public override int GetMaxByteCount(int charCount)
         {
-            if (charCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(charCount),
-                     SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(charCount);
 
             // Characters would be # of characters + 1 in case left over high surrogate is ? * max fallback
             long byteCount = (long)charCount + 1;
@@ -1075,9 +1069,7 @@ namespace System.Text
 
         public override int GetMaxCharCount(int byteCount)
         {
-            if (byteCount < 0)
-                throw new ArgumentOutOfRangeException(nameof(byteCount),
-                     SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(byteCount);
 
             // A supplementary character becomes 2 surrogate characters, so 4 input bytes becomes 2 chars,
             // plus we may have 1 surrogate char left over if the decoder has 3 bytes in it already for a non-bmp char.

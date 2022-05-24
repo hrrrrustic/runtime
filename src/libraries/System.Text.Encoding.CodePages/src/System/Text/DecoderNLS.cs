@@ -100,8 +100,7 @@ namespace System.Text
             if (bytes is null)
                 throw new ArgumentNullException(nameof(bytes));
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             // Remember the flush
             m_mustFlush = flush;

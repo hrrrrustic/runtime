@@ -322,10 +322,7 @@ internal static partial class Interop
         internal static unsafe string proc_pidpath(int pid)
         {
             // Negative PIDs are invalid
-            if (pid < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pid), SR.NegativePidNotSupported);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(pid);
 
             // The path is a fixed buffer size, so use that and trim it after
             int result = 0;
@@ -363,10 +360,7 @@ internal static partial class Interop
         internal static unsafe rusage_info_v3 proc_pid_rusage(int pid)
         {
             // Negative PIDs are invalid
-            if (pid < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(pid), SR.NegativePidNotSupported);
-            }
+            ArgumentOutOfRangeException.ThrowIfNegative(pid);
 
             rusage_info_v3 info = default;
 

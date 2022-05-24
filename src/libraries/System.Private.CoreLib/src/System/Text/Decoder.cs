@@ -97,8 +97,7 @@ namespace System.Text
         public virtual unsafe int GetCharCount(byte* bytes, int count, bool flush)
         {
             ArgumentNullException.ThrowIfNull(bytes);
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             byte[] arrbyte = new byte[count];
 

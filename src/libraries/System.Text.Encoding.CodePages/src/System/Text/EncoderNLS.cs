@@ -102,8 +102,7 @@ namespace System.Text
             if (chars is null)
                 throw new ArgumentNullException(nameof(chars));
 
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
+            ArgumentOutOfRangeException.ThrowIfNegative(count);
 
             m_mustFlush = flush;
             m_throwOnOverflow = true;
