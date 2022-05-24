@@ -293,7 +293,7 @@ namespace System.IO.Ports
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, Handshake.None, Handshake.RequestToSendXOnXOff);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, Handshake.None, Handshake.RequestToSendXOnXOff);
 
                 if (IsOpen)
                     _internalSerialStream.Handshake = value;
@@ -329,7 +329,7 @@ namespace System.IO.Ports
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, Parity.None, Parity.Space);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, Parity.None, Parity.Space);
 
                 if (IsOpen)
                     _internalSerialStream.Parity = value;
@@ -456,7 +456,7 @@ namespace System.IO.Ports
             set
             {
                 // this range check looks wrong, but it really is correct.  One = 1, Two = 2, and OnePointFive = 3
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, StopBits.One, StopBits.OnePointFive);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, StopBits.One, StopBits.OnePointFive);
 
                 if (IsOpen)
                     _internalSerialStream.StopBits = value;

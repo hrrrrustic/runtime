@@ -239,7 +239,7 @@ namespace System.DirectoryServices.ActiveDirectory
         {
             CheckIfDisposed();
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(role, AdamRole.SchemaRole, AdamRole.NamingRole);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(role, AdamRole.SchemaRole, AdamRole.NamingRole);
 
             // set the appropriate attribute on the root dse
             try

@@ -408,7 +408,7 @@ namespace System.IO.Pipes
             set
             {
                 CheckPipePropertyOperations();
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PipeTransmissionMode.Byte, PipeTransmissionMode.Message);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PipeTransmissionMode.Byte, PipeTransmissionMode.Message);
 
                 if (value != PipeTransmissionMode.Byte) // Unix pipes are only byte-based, not message-based
                 {

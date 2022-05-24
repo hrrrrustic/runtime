@@ -1325,7 +1325,7 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(digits), SR.ArgumentOutOfRange_RoundingDigits);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(mode, MidpointRounding.ToEven, MidpointRounding.ToPositiveInfinity);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(mode, MidpointRounding.ToEven, MidpointRounding.ToPositiveInfinity);
 
             if (Abs(value) < doubleRoundLimit)
             {

@@ -27,7 +27,7 @@ namespace Microsoft.Extensions.Logging.Console
             get => _format;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ConsoleLoggerFormat.Default, ConsoleLoggerFormat.Systemd);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, ConsoleLoggerFormat.Default, ConsoleLoggerFormat.Systemd);
                 _format = value;
             }
 #pragma warning restore CS0618

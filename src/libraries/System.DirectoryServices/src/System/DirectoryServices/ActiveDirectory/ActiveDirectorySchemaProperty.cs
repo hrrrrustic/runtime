@@ -601,7 +601,7 @@ namespace System.DirectoryServices.ActiveDirectory
             {
                 CheckIfDisposed();
 
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ActiveDirectorySyntax.CaseExactString, ActiveDirectorySyntax.ReplicaLink);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, ActiveDirectorySyntax.CaseExactString, ActiveDirectorySyntax.ReplicaLink);
 
                 if (isBound)
                 {

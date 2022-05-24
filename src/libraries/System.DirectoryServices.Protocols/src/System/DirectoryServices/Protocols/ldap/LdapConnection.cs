@@ -70,7 +70,7 @@ namespace System.DirectoryServices.Protocols
 
             _connectionAuthType = authType;
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(authType, AuthType.Anonymous, AuthType.Kerberos);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(authType, AuthType.Anonymous, AuthType.Kerberos);
 
             // Throw if user wants to do anonymous bind but specifies credentials.
             if (AuthType == AuthType.Anonymous && (_directoryCredential != null && (!string.IsNullOrEmpty(_directoryCredential.Password) || !string.IsNullOrEmpty(_directoryCredential.UserName))))
@@ -121,7 +121,7 @@ namespace System.DirectoryServices.Protocols
             get => _connectionAuthType;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, AuthType.Anonymous, AuthType.Kerberos);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, AuthType.Anonymous, AuthType.Kerberos);
 
                 // If the change is made after we have bound to the server and value is really
                 // changed, set the flag to indicate the need to do rebind.
@@ -295,7 +295,7 @@ namespace System.DirectoryServices.Protocols
                 throw new ArgumentNullException(nameof(request));
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(partialMode, PartialResultProcessing.NoPartialResultSupport, PartialResultProcessing.ReturnPartialResultsAndNotifyCallback);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(partialMode, PartialResultProcessing.NoPartialResultSupport, PartialResultProcessing.ReturnPartialResultsAndNotifyCallback);
 
             if (partialMode != PartialResultProcessing.NoPartialResultSupport && !(request is SearchRequest))
             {

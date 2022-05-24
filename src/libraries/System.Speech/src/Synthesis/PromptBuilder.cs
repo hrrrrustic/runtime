@@ -65,7 +65,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(rate, PromptRate.NotSet, PromptRate.ExtraSlow);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(rate, PromptRate.NotSet, PromptRate.ExtraSlow);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -100,7 +100,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(volume, PromptVolume.NotSet, PromptVolume.Default);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(volume, PromptVolume.NotSet, PromptVolume.Default);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -137,7 +137,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(emphasis, PromptEmphasis.NotSet, PromptEmphasis.Reduced);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(emphasis, PromptEmphasis.NotSet, PromptEmphasis.Reduced);
 
             // Validate that text can be added in this context
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);
@@ -420,7 +420,7 @@ namespace System.Speech.Synthesis
         {
             Helpers.ThrowIfNull(textToSpeak, nameof(textToSpeak));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(sayAs, SayAs.SpellOut, SayAs.Text);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(sayAs, SayAs.SpellOut, SayAs.Text);
 
             // check for well formed document
             ValidateElement(_elementStack.Peek(), SsmlElement.Text);

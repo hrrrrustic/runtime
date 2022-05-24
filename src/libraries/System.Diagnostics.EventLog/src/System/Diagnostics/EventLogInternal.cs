@@ -1020,7 +1020,7 @@ namespace System.Diagnostics
         {
             string currentMachineName = this.machineName;
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(action, OverflowAction.DoNotOverwrite, OverflowAction.OverwriteOlder);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(action, OverflowAction.DoNotOverwrite, OverflowAction.OverwriteOlder);
             // this is a long because in the if statement we may need to store values as
             // large as UInt32.MaxValue - 1.  This would overflow an int.
             long retentionvalue = (long)action;

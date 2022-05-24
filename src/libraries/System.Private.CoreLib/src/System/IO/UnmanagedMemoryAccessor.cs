@@ -55,7 +55,7 @@ namespace System.IO
             {
                 throw new ArgumentException(SR.Argument_OffsetAndCapacityOutOfBounds);
             }
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, FileAccess.Read, FileAccess.ReadWrite);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, FileAccess.Read, FileAccess.ReadWrite);
 
             if (_isOpen)
             {

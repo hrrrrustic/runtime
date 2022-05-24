@@ -46,7 +46,7 @@ namespace System.Globalization
 
         public GregorianCalendar(GregorianCalendarTypes type)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(type, GregorianCalendarTypes.Localized, GregorianCalendarTypes.TransliteratedFrench);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(type, GregorianCalendarTypes.Localized, GregorianCalendarTypes.TransliteratedFrench);
 
             _type = type;
         }
@@ -57,7 +57,7 @@ namespace System.Globalization
             set
             {
                 VerifyWritable();
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, GregorianCalendarTypes.Localized, GregorianCalendarTypes.TransliteratedFrench);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, GregorianCalendarTypes.Localized, GregorianCalendarTypes.TransliteratedFrench);
 
                 _type = value;
             }

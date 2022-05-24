@@ -25,7 +25,7 @@ namespace System.Configuration
             {
                 TimeSpan timeValue = TimeSpan.Parse(value, CultureInfo.InvariantCulture);
 
-                ArgumentOutOfRangeException.ThrowIfLessThan(MaxValue, timeValue);
+                //ArgumentOutOfRangeException.ThrowIfLessThan(MaxValue, timeValue);
 
                 MinValue = timeValue;
             }
@@ -38,7 +38,7 @@ namespace System.Configuration
             {
                 TimeSpan timeValue = TimeSpan.Parse(value, CultureInfo.InvariantCulture);
 
-                ArgumentOutOfRangeException.ThrowIfGreaterThan(MinValue, timeValue);
+                //ArgumentOutOfRangeException.ThrowIfGreaterThan(MinValue, timeValue);
 
                 MaxValue = timeValue;
             }

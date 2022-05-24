@@ -240,7 +240,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public void SetSecurityLevel(ReplicationSecurityLevel securityLevel)
         {
             CheckIfDisposed();
-            ArgumentOutOfRangeException.ThrowIfNotBetween(securityLevel, ReplicationSecurityLevel.NegotiatePassThrough, ReplicationSecurityLevel.MutualAuthentication);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(securityLevel, ReplicationSecurityLevel.NegotiatePassThrough, ReplicationSecurityLevel.MutualAuthentication);
 
             try
             {

@@ -84,7 +84,7 @@ namespace System.DirectoryServices
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PasswordEncodingMethod.PasswordEncodingSsl, PasswordEncodingMethod.PasswordEncodingClear);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PasswordEncodingMethod.PasswordEncodingSsl, PasswordEncodingMethod.PasswordEncodingClear);
 
                 ((UnsafeNativeMethods.IAdsObjectOptions)_entry.AdsObject).SetOption((int)AdsOptions.ADS_OPTION_PASSWORD_METHOD, value);
             }

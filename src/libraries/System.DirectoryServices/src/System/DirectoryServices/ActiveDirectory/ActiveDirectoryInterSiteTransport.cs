@@ -42,7 +42,7 @@ namespace System.DirectoryServices.ActiveDirectory
                     throw new ArgumentException(SR.NotADOrADAM, nameof(context));
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
 
             //  work with copy of the context
             context = new DirectoryContext(context);

@@ -451,7 +451,7 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(digits), SR.ArgumentOutOfRange_RoundingDigits_MathF);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(mode, MidpointRounding.ToEven, MidpointRounding.ToPositiveInfinity);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(mode, MidpointRounding.ToEven, MidpointRounding.ToPositiveInfinity);
 
             if (Abs(x) < singleRoundLimit)
             {

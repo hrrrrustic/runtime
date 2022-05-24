@@ -237,7 +237,7 @@ namespace System.DirectoryServices.Protocols
             get => _attributeOperation;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DirectoryAttributeOperation.Add, DirectoryAttributeOperation.Replace);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, DirectoryAttributeOperation.Add, DirectoryAttributeOperation.Replace);
 
                 _attributeOperation = value;
             }

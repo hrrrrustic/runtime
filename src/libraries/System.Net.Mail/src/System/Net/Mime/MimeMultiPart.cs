@@ -26,7 +26,7 @@ namespace System.Net.Mime
         {
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, MimeMultiPartType.Mixed, MimeMultiPartType.Related);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, MimeMultiPartType.Mixed, MimeMultiPartType.Related);
                 SetType(value);
             }
         }

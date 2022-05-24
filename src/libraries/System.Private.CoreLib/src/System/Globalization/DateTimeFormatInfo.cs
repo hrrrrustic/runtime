@@ -638,7 +638,7 @@ namespace System.Globalization
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
                 }
 
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DayOfWeek.Sunday, DayOfWeek.Saturday);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
                 firstDayOfWeek = (int)value;
             }
@@ -662,7 +662,7 @@ namespace System.Globalization
                 {
                     throw new InvalidOperationException(SR.InvalidOperation_ReadOnly);
                 }
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, CalendarWeekRule.FirstDay, CalendarWeekRule.FirstFourDayWeek);
 
                 calendarWeekRule = (int)value;
             }
@@ -1219,7 +1219,7 @@ namespace System.Globalization
 
         public string GetAbbreviatedDayName(DayOfWeek dayofweek)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(dayofweek, DayOfWeek.Sunday, DayOfWeek.Saturday);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(dayofweek, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
             // Don't call the public property AbbreviatedDayNames here since a clone is needed in that
             // property, so it will be slower. Instead, use GetAbbreviatedDayOfWeekNames() directly.
@@ -1231,7 +1231,7 @@ namespace System.Globalization
         /// </summary>
         public string GetShortestDayName(DayOfWeek dayOfWeek)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(dayOfWeek, DayOfWeek.Sunday, DayOfWeek.Saturday);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(dayOfWeek, DayOfWeek.Sunday, DayOfWeek.Saturday);
 
             // Don't call the public property SuperShortDayNames here since a clone is needed in that
             // property, so it will be slower. Instead, use internalGetSuperShortDayNames() directly.

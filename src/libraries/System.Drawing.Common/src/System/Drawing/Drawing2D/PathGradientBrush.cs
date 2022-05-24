@@ -17,7 +17,7 @@ namespace System.Drawing.Drawing2D
         {
             ArgumentNullException.ThrowIfNull(points);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             // GdipCreatePathGradient returns InsufficientBuffer for less than 3 points, which we turn into
             // OutOfMemoryException(). We used to copy nothing into an empty native buffer for zero points,
@@ -40,7 +40,7 @@ namespace System.Drawing.Drawing2D
         {
             ArgumentNullException.ThrowIfNull(points);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             // GdipCreatePathGradient returns InsufficientBuffer for less than 3 points, which we turn into
             // OutOfMemoryException(). We used to copy nothing into an empty native buffer for zero points,
@@ -392,7 +392,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 Gdip.CheckStatus(Gdip.GdipSetPathGradientWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value)));
             }

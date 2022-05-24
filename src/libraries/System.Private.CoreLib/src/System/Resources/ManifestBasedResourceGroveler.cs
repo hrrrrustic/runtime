@@ -146,7 +146,7 @@ namespace System.Resources
             }
 
             fallbackLocation = attr.Location;
-            ArgumentOutOfRangeException.ThrowIfNotBetween(fallbackLocation, UltimateResourceFallbackLocation.MainAssembly, UltimateResourceFallbackLocation.Satellite);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(fallbackLocation, UltimateResourceFallbackLocation.MainAssembly, UltimateResourceFallbackLocation.Satellite);
 
             try
             {

@@ -144,7 +144,7 @@ namespace System.IO.Strategies
 
         public sealed override long Seek(long offset, SeekOrigin origin)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(origin, SeekOrigin.Begin, SeekOrigin.End);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(origin, SeekOrigin.Begin, SeekOrigin.End);
             if (_fileHandle.IsClosed) ThrowHelper.ThrowObjectDisposedException_FileClosed();
             if (!CanSeek) ThrowHelper.ThrowNotSupportedException_UnseekableStream();
 

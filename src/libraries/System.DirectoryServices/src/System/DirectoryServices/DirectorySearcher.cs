@@ -273,7 +273,7 @@ namespace System.DirectoryServices
             get => _scope;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
 
                 // user explicitly set SearchScope to something other than Base and also want to do ASQ, it is not supported
                 if (_attributeScopeQuerySpecified == true && value != SearchScope.Base)
@@ -448,7 +448,7 @@ namespace System.DirectoryServices
             get => _derefAlias;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
 
                 _derefAlias = value;
             }
@@ -482,7 +482,7 @@ namespace System.DirectoryServices
             get => _extendedDN;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDN.None, ExtendedDN.Standard);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, ExtendedDN.None, ExtendedDN.Standard);
 
                 _extendedDN = value;
             }

@@ -56,7 +56,7 @@ namespace System.Formats.Cbor
 
         public static void Validate(CborConformanceMode conformanceMode)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(conformanceMode, CborConformanceMode.Lax, CborConformanceMode.Ctap2Canonical);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(conformanceMode, CborConformanceMode.Lax, CborConformanceMode.Ctap2Canonical);
         }
 
         public static bool RequiresCanonicalIntegerRepresentation(CborConformanceMode conformanceMode)

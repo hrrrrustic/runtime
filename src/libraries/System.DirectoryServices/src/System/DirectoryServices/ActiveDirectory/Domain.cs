@@ -633,7 +633,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetDomain == null)
                 throw new ArgumentNullException(nameof(targetDomain));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             // verify outbound trust first
             if ((direction & TrustDirection.Outbound) != 0)
@@ -672,7 +672,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetDomainName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(targetDomainName));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             if (trustPassword == null)
                 throw new ArgumentNullException(nameof(trustPassword));
@@ -695,7 +695,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetDomain == null)
                 throw new ArgumentNullException(nameof(targetDomain));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(direction, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             string password = TrustHelper.CreateTrustPassword();
 
@@ -741,7 +741,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetDomainName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(targetDomainName));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             if (newTrustPassword == null)
                 throw new ArgumentNullException(nameof(newTrustPassword));
@@ -759,7 +759,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (targetDomain == null)
                 throw new ArgumentNullException(nameof(targetDomain));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(newTrustDirection, TrustDirection.Inbound, TrustDirection.Bidirectional);
 
             // no we generate trust password
             string password = TrustHelper.CreateTrustPassword();

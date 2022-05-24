@@ -502,7 +502,7 @@ namespace System
         {
             ArgumentNullException.ThrowIfNull(value);
 
-            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)startIndex, Length);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, Length);
 
             int oldLength = Length;
             int insertLength = value.Length;
@@ -866,7 +866,7 @@ namespace System
         // a remove that just takes a startindex.
         public string Remove(int startIndex)
         {
-            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)startIndex, Length);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, Length);
 
             return Substring(0, startIndex);
         }

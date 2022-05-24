@@ -52,7 +52,7 @@ namespace System.Security.Cryptography.Pkcs
             get { return _signerIdentifierType; }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SubjectIdentifierType.IssuerAndSerialNumber, SubjectIdentifierType.NoSignature);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SubjectIdentifierType.IssuerAndSerialNumber, SubjectIdentifierType.NoSignature);
                 _signerIdentifierType = value;
             }
         }

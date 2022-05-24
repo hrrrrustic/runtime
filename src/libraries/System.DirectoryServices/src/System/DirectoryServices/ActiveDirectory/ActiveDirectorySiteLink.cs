@@ -688,7 +688,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (siteLinkName.Length == 0)
                 throw new ArgumentException(SR.EmptyStringParameter, nameof(siteLinkName));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
         }
 
         private void GetSites()

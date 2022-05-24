@@ -15,7 +15,7 @@ namespace System.Drawing.Drawing2D
 
         public HatchBrush(HatchStyle hatchstyle, Color foreColor, Color backColor)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(hatchstyle, HatchStyle.Min, HatchStyle.SolidDiamond);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(hatchstyle, HatchStyle.Min, HatchStyle.SolidDiamond);
 
             IntPtr nativeBrush;
             int status = Gdip.GdipCreateHatchBrush(unchecked((int)hatchstyle), foreColor.ToArgb(), backColor.ToArgb(), out nativeBrush);

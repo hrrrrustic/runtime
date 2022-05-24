@@ -252,7 +252,7 @@ namespace System.DirectoryServices.Protocols
             get => _directoryScope;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SearchScope.Base, SearchScope.Subtree);
 
                 _directoryScope = value;
             }
@@ -263,7 +263,7 @@ namespace System.DirectoryServices.Protocols
             get => _directoryRefAlias;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, DereferenceAlias.Never, DereferenceAlias.Always);
 
                 _directoryRefAlias = value;
             }

@@ -38,7 +38,7 @@ namespace System.Drawing.Printing
             get => _kind;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PrinterResolutionKind.High, PrinterResolutionKind.Custom);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PrinterResolutionKind.High, PrinterResolutionKind.Custom);
 
                 _kind = value;
             }

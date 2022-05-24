@@ -341,7 +341,7 @@ namespace System.DirectoryServices.ActiveDirectory
         {
             CheckIfDisposed();
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(role, ActiveDirectoryRole.SchemaRole, ActiveDirectoryRole.InfrastructureRole);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(role, ActiveDirectoryRole.SchemaRole, ActiveDirectoryRole.InfrastructureRole);
 
             try
             {

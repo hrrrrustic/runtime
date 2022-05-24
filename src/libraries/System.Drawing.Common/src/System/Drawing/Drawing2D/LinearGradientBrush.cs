@@ -36,7 +36,7 @@ namespace System.Drawing.Drawing2D
 
         public LinearGradientBrush(RectangleF rect, Color color1, Color color2, LinearGradientMode linearGradientMode)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
 
             if (rect.Width == 0.0 || rect.Height == 0.0)
                 throw new ArgumentException(SR.Format(SR.GdiplusInvalidRectangle, rect.ToString()));
@@ -54,7 +54,7 @@ namespace System.Drawing.Drawing2D
 
         public LinearGradientBrush(Rectangle rect, Color color1, Color color2, LinearGradientMode linearGradientMode)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(linearGradientMode, LinearGradientMode.Horizontal, LinearGradientMode.BackwardDiagonal);
             if (rect.Width == 0 || rect.Height == 0)
                 throw new ArgumentException(SR.Format(SR.GdiplusInvalidRectangle, rect.ToString()));
 
@@ -439,7 +439,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 Gdip.CheckStatus(Gdip.GdipSetLineWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value)));
             }

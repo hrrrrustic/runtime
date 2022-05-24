@@ -1130,7 +1130,7 @@ namespace System.Transactions
         // Validate a given interop Option
         private static void ValidateInteropOption(EnterpriseServicesInteropOption interopOption)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(interopOption, EnterpriseServicesInteropOption.None, EnterpriseServicesInteropOption.Full);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(interopOption, EnterpriseServicesInteropOption.None, EnterpriseServicesInteropOption.Full);
         }
 
 
@@ -1139,12 +1139,12 @@ namespace System.Transactions
         // Scope timeouts are not governed by MaxTimeout and therefore need a special validate function
         private static void ValidateScopeTimeout(string? paramName, TimeSpan scopeTimeout)
         {
-            ArgumentOutOfRangeException.ThrowIfLessThan(scopeTimeout, TimeSpan.Zero);
+            //ArgumentOutOfRangeException.ThrowIfLessThan(scopeTimeout, TimeSpan.Zero);
         }
 
         private void ValidateAndSetAsyncFlowOption(TransactionScopeAsyncFlowOption asyncFlowOption)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(asyncFlowOption, TransactionScopeAsyncFlowOption.Suppress, TransactionScopeAsyncFlowOption.Enabled);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(asyncFlowOption, TransactionScopeAsyncFlowOption.Suppress, TransactionScopeAsyncFlowOption.Enabled);
 
             if (asyncFlowOption == TransactionScopeAsyncFlowOption.Enabled)
             {

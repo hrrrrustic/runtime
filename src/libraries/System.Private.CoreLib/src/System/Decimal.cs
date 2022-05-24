@@ -307,7 +307,7 @@ namespace System
         //
         public Decimal(int lo, int mid, int hi, bool isNegative, byte scale)
         {
-            ArgumentOutOfRangeException.ThrowIfGreaterThan(scale, 28);
+            //ArgumentOutOfRangeException.ThrowIfGreaterThan(scale, 28);
             _lo64 = (uint)lo + ((ulong)(uint)mid << 32);
             _hi32 = (uint)hi;
             _flags = ((int)scale) << 16;
@@ -693,7 +693,7 @@ namespace System
 
         private static decimal Round(ref decimal d, int decimals, MidpointRounding mode)
         {
-            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)decimals, 28);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)decimals, (uint)28);
             if ((uint)mode > (uint)MidpointRounding.ToPositiveInfinity)
                 throw new ArgumentException(SR.Format(SR.Argument_InvalidEnumValue, mode, nameof(MidpointRounding)), nameof(mode));
 

@@ -18,7 +18,7 @@ namespace System.Net
         {
             ArgumentException.ThrowIfNullOrEmpty(host);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(port, IPEndPoint.MinPort, IPEndPoint.MaxPort);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(port, IPEndPoint.MinPort, IPEndPoint.MaxPort);
 
             if (addressFamily != AddressFamily.InterNetwork &&
                 addressFamily != AddressFamily.InterNetworkV6 &&

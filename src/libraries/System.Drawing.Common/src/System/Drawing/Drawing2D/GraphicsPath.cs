@@ -129,7 +129,7 @@ namespace System.Drawing.Drawing2D
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, FillMode.Alternate, FillMode.Winding);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, FillMode.Alternate, FillMode.Winding);
 
                 Gdip.CheckStatus(Gdip.GdipSetPathFillMode(new HandleRef(this, _nativePath), value));
             }

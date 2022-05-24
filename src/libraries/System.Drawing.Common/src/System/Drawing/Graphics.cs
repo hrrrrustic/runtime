@@ -256,7 +256,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, CompositingMode.SourceOver, CompositingMode.SourceCopy);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, CompositingMode.SourceOver, CompositingMode.SourceCopy);
 
                 Gdip.CheckStatus(Gdip.GdipSetCompositingMode(new HandleRef(this, NativeGraphics), value));
             }
@@ -271,7 +271,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, CompositingQuality.Invalid, CompositingQuality.AssumeLinear);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, CompositingQuality.Invalid, CompositingQuality.AssumeLinear);
 
                 Gdip.CheckStatus(Gdip.GdipSetCompositingQuality(new HandleRef(this, NativeGraphics), value));
             }
@@ -307,7 +307,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, InterpolationMode.Invalid, InterpolationMode.HighQualityBicubic);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, InterpolationMode.Invalid, InterpolationMode.HighQualityBicubic);
 
                 // GDI+ interprets the value of InterpolationMode and sets a value accordingly.
                 // Libgdiplus does not, so do this manually here.
@@ -374,7 +374,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, GraphicsUnit.World, GraphicsUnit.Millimeter);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, GraphicsUnit.World, GraphicsUnit.Millimeter);
 
                 // GDI+ doesn't allow GraphicsUnit.World as a valid value for PageUnit.
                 // Libgdiplus doesn't perform argument validation, so do this here.
@@ -394,7 +394,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PixelOffsetMode.Invalid, PixelOffsetMode.Half);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PixelOffsetMode.Invalid, PixelOffsetMode.Half);
 
                 // GDI+ doesn't allow PixelOffsetMode.Invalid as a valid value for PixelOffsetMode.
                 // Libgdiplus doesn't perform argument validation, so do this here.
@@ -427,7 +427,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SmoothingMode.Invalid, SmoothingMode.AntiAlias);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SmoothingMode.Invalid, SmoothingMode.AntiAlias);
 
                 // GDI+ interprets the value of SmoothingMode and sets a value accordingly.
                 // Libgdiplus does not, so do this manually here.
@@ -475,7 +475,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, TextRenderingHint.SystemDefault, TextRenderingHint.ClearTypeGridFit);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, TextRenderingHint.SystemDefault, TextRenderingHint.ClearTypeGridFit);
 
                 Gdip.CheckStatus(Gdip.GdipSetTextRenderingHint(new HandleRef(this, NativeGraphics), value));
             }

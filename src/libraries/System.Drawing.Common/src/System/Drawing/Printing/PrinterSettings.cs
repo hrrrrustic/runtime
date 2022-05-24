@@ -139,7 +139,7 @@ namespace System.Drawing.Printing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, Duplex.Default, Duplex.Horizontal);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, Duplex.Default, Duplex.Horizontal);
 
                 _duplex = value;
             }

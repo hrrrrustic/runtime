@@ -157,7 +157,7 @@ namespace Microsoft.Extensions.Caching.Memory
             get => _size < 0 ? null : _size;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNegative(value);
+                //ArgumentOutOfRangeException.ThrowIfNegative(value);
 
                 _size = value ?? NotSet;
             }

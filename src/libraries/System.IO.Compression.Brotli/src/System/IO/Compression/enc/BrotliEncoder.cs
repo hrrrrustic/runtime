@@ -74,7 +74,7 @@ namespace System.IO.Compression
                 InitializeEncoder();
                 Debug.Assert(_state != null && !_state.IsInvalid && !_state.IsClosed);
             }
-            ArgumentOutOfRangeException.ThrowIfNotBetween(quality, BrotliUtils.Quality_Min, BrotliUtils.Quality_Max);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(quality, BrotliUtils.Quality_Min, BrotliUtils.Quality_Max);
             if (Interop.Brotli.BrotliEncoderSetParameter(_state, BrotliEncoderParameter.Quality, (uint)quality) == Interop.BOOL.FALSE)
             {
                 throw new InvalidOperationException(SR.Format(SR.BrotliEncoder_InvalidSetParameter, "Quality"));
@@ -89,7 +89,7 @@ namespace System.IO.Compression
                 InitializeEncoder();
                 Debug.Assert(_state != null && !_state.IsInvalid && !_state.IsClosed);
             }
-            ArgumentOutOfRangeException.ThrowIfNotBetween(window, BrotliUtils.WindowBits_Min, BrotliUtils.WindowBits_Max);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(window, BrotliUtils.WindowBits_Min, BrotliUtils.WindowBits_Max);
             if (Interop.Brotli.BrotliEncoderSetParameter(_state, BrotliEncoderParameter.LGWin, (uint)window) == Interop.BOOL.FALSE)
             {
                 throw new InvalidOperationException(SR.Format(SR.BrotliEncoder_InvalidSetParameter, "Window"));
@@ -195,7 +195,7 @@ namespace System.IO.Compression
         public static bool TryCompress(ReadOnlySpan<byte> source, Span<byte> destination, out int bytesWritten, int quality, int window)
         {
             ArgumentOutOfRangeException.ThrowIfNotBetween(quality, 0, BrotliUtils.Quality_Max);
-            ArgumentOutOfRangeException.ThrowIfNotBetween(window, BrotliUtils.WindowBits_Min, BrotliUtils.WindowBits_Max);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(window, BrotliUtils.WindowBits_Min, BrotliUtils.WindowBits_Max);
 
             unsafe
             {

@@ -26,7 +26,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture(new HandleRef(image, image.nativeImage),
@@ -41,7 +41,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture2(new HandleRef(image, image.nativeImage),
@@ -60,7 +60,7 @@ namespace System.Drawing
         {
             ArgumentNullException.ThrowIfNull(image);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(wrapMode, WrapMode.Tile, WrapMode.Clamp);
 
             IntPtr brush;
             int status = Gdip.GdipCreateTexture2I(new HandleRef(image, image.nativeImage),
@@ -164,7 +164,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, WrapMode.Tile, WrapMode.Clamp);
 
                 int status = Gdip.GdipSetTextureWrapMode(new HandleRef(this, NativeBrush), unchecked((int)value));
                 Gdip.CheckStatus(status);

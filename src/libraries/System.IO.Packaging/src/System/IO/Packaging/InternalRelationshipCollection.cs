@@ -401,7 +401,7 @@ namespace System.IO.Packaging
             ThrowIfInvalidRelationshipType(relationshipType);
 
             //Verify if the Enum value is valid
-            ArgumentOutOfRangeException.ThrowIfNotBetween(targetMode, TargetMode.Internal, TargetMode.External);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(targetMode, TargetMode.Internal, TargetMode.External);
 
             // don't accept absolute Uri's if targetMode is Internal.
             if (targetMode == TargetMode.Internal && targetUri.IsAbsoluteUri)

@@ -174,7 +174,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringAlignment.Near, StringAlignment.Far);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringAlignment.Near, StringAlignment.Far);
 
                 int status = Gdip.GdipSetStringFormatAlign(new HandleRef(this, nativeFormat), value);
 
@@ -201,7 +201,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, 0, StringAlignment.Far);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, 0, StringAlignment.Far);
 
                 int status = Gdip.GdipSetStringFormatLineAlign(new HandleRef(this, nativeFormat), value);
 
@@ -227,7 +227,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, HotkeyPrefix.None, HotkeyPrefix.Hide);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, HotkeyPrefix.None, HotkeyPrefix.Hide);
 
                 int status = Gdip.GdipSetStringFormatHotkeyPrefix(new HandleRef(this, nativeFormat), value);
 
@@ -303,7 +303,7 @@ namespace System.Drawing
 
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringTrimming.None, StringTrimming.EllipsisPath);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, StringTrimming.None, StringTrimming.EllipsisPath);
 
                 int status = Gdip.GdipSetStringFormatTrimming(new HandleRef(this, nativeFormat), value);
 

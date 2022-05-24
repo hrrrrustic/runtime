@@ -36,7 +36,7 @@ namespace System.DirectoryServices
             get => _sortDirection;
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, SortDirection.Ascending, SortDirection.Descending);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, SortDirection.Ascending, SortDirection.Descending);
 
                 _sortDirection = value;
             }

@@ -214,7 +214,7 @@ namespace System.Diagnostics
 
         public static PerformanceCounterCategory Create(string categoryName, string categoryHelp, PerformanceCounterCategoryType categoryType, CounterCreationDataCollection counterData)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(categoryType, PerformanceCounterCategoryType.Unknown, PerformanceCounterCategoryType.MultiInstance);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(categoryType, PerformanceCounterCategoryType.Unknown, PerformanceCounterCategoryType.MultiInstance);
             if (counterData == null)
                 throw new ArgumentNullException(nameof(counterData));
 

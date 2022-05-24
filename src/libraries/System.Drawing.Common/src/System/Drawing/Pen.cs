@@ -391,7 +391,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, LineJoin.Miter, LineJoin.MiterClipped);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, LineJoin.Miter, LineJoin.MiterClipped);
 
                 if (_immutable)
                 {
@@ -443,7 +443,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PenAlignment.Center, PenAlignment.Right);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PenAlignment.Center, PenAlignment.Right);
 
                 if (_immutable)
                 {
@@ -715,7 +715,7 @@ namespace System.Drawing
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, DashStyle.Solid, DashStyle.Custom);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, DashStyle.Solid, DashStyle.Custom);
 
                 if (_immutable)
                 {

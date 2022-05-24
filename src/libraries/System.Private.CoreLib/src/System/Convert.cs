@@ -2335,7 +2335,7 @@ namespace System
 
         public static string ToBase64String(ReadOnlySpan<byte> bytes, Base64FormattingOptions options = Base64FormattingOptions.None)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
 
             if (bytes.Length == 0)
             {
@@ -2372,7 +2372,7 @@ namespace System
             ArgumentOutOfRangeException.ThrowIfNegative(offsetIn);
             ArgumentOutOfRangeException.ThrowIfNegative(offsetOut);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
 
             int retVal;
 
@@ -2409,7 +2409,7 @@ namespace System
 
         public static unsafe bool TryToBase64Chars(ReadOnlySpan<byte> bytes, Span<char> chars, out int charsWritten, Base64FormattingOptions options = Base64FormattingOptions.None)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(options, Base64FormattingOptions.None, Base64FormattingOptions.InsertLineBreaks);
 
             if (bytes.Length == 0)
             {

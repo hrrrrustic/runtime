@@ -226,7 +226,7 @@ namespace System.Diagnostics
             get { return _instanceLifetime; }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PerformanceCounterInstanceLifetime.Global, PerformanceCounterInstanceLifetime.Process);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PerformanceCounterInstanceLifetime.Global, PerformanceCounterInstanceLifetime.Process);
 
                 if (_initialized)
                     throw new InvalidOperationException(SR.CantSetLifetimeAfterInitialized);

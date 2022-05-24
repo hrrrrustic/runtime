@@ -227,7 +227,7 @@ namespace System.Data.SqlTypes
         // Convert from TimeSpan, rounded to one three-hundredth second, due to loss of precision
         private static SqlDateTime FromTimeSpan(TimeSpan value)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(value, s_minTimeSpan, s_maxTimeSpan);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(value, s_minTimeSpan, s_maxTimeSpan);
 
             int day = value.Days;
 

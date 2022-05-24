@@ -121,7 +121,7 @@ namespace System.DirectoryServices.ActiveDirectory
             if (sourceServer == null)
                 throw new ArgumentNullException(nameof(sourceServer));
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(transport, ActiveDirectoryTransportType.Rpc, ActiveDirectoryTransportType.Smtp);
 
             //  work with copy of the context
             context = new DirectoryContext(context);

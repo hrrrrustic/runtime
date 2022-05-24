@@ -50,7 +50,7 @@ namespace System
 
         internal OperatingSystem(PlatformID platform, Version version, string? servicePack)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(platform, PlatformID.Win32S, PlatformID.Other);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(platform, PlatformID.Win32S, PlatformID.Other);
 
             ArgumentNullException.ThrowIfNull(version);
 

@@ -37,7 +37,7 @@ namespace System.Diagnostics
 
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, TraceLevel.Off, TraceLevel.Verbose);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, TraceLevel.Off, TraceLevel.Verbose);
                 SwitchSetting = (int)value;
             }
         }
