@@ -46,7 +46,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationMode.NoCheck, X509RevocationMode.Offline);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationMode.NoCheck, X509RevocationMode.Offline);
                 _revocationMode = value;
             }
         }
@@ -59,7 +59,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationFlag.EndCertificateOnly, X509RevocationFlag.ExcludeRoot);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509RevocationFlag.EndCertificateOnly, X509RevocationFlag.ExcludeRoot);
                 _revocationFlag = value;
             }
         }
@@ -72,7 +72,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509VerificationFlags.NoFlag, X509VerificationFlags.AllFlags);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509VerificationFlags.NoFlag, X509VerificationFlags.AllFlags);
                 _verificationFlags = value;
             }
         }
@@ -85,7 +85,7 @@ namespace System.Security.Cryptography.X509Certificates
             }
             set
             {
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509ChainTrustMode.System, X509ChainTrustMode.CustomRootTrust);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, X509ChainTrustMode.System, X509ChainTrustMode.CustomRootTrust);
                 _trustMode = value;
             }
         }

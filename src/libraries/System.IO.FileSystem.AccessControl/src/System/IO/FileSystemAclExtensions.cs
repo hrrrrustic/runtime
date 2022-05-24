@@ -136,11 +136,11 @@ namespace System.IO
             ArgumentNullException.ThrowIfNull(fileInfo);
 
             // don't include inheritable in our bounds check for share
-            FileShare tempshare = share & ~FileShare.Inheritable;
+            //FileShare tempshare = share & ~FileShare.Inheritable;
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(mode, FileMode.CreateNew, FileMode.Append);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(mode, FileMode.CreateNew, FileMode.Append);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(tempshare, FileShare.None, (FileShare.ReadWrite | FileShare.Delete));
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(tempshare, FileShare.None, (FileShare.ReadWrite | FileShare.Delete));
 
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(bufferSize);
 

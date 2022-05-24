@@ -557,7 +557,7 @@ namespace System.IO.Pipes
                 // and the AnonymousPipeStreams override this.
 
                 CheckPipePropertyOperations();
-                ArgumentOutOfRangeException.ThrowIfNotBetween(value, PipeTransmissionMode.Byte, PipeTransmissionMode.Message);
+                //ArgumentOutOfRangeException.ThrowIfNotBetween(value, PipeTransmissionMode.Byte, PipeTransmissionMode.Message);
 
                 unsafe
                 {

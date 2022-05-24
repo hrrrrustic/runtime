@@ -20,7 +20,7 @@ namespace System.IO.Pipes
                 throw new NotSupportedException(SR.NotSupported_AnonymousPipeUnidirectional);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             Create(direction, inheritability, bufferSize, pipeSecurity);
         }

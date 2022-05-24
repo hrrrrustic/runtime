@@ -12,7 +12,7 @@ namespace System.Net.Cache
 
         public RequestCachePolicy(RequestCacheLevel level)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(level, RequestCacheLevel.Default, RequestCacheLevel.NoCacheNoStore);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(level, RequestCacheLevel.Default, RequestCacheLevel.NoCacheNoStore);
 
             Level = level;
         }

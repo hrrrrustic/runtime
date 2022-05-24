@@ -112,7 +112,7 @@ namespace System.Security.Principal
 
         public virtual bool IsInRole(WindowsBuiltInRole role)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(role, WindowsBuiltInRole.Administrator, WindowsBuiltInRole.Replicator);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(role, WindowsBuiltInRole.Administrator, WindowsBuiltInRole.Replicator);
 
             return IsInRole((int)role);
         }

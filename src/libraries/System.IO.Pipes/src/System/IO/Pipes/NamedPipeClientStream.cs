@@ -66,8 +66,8 @@ namespace System.IO.Pipes
             {
                 throw new ArgumentOutOfRangeException(nameof(options), SR.ArgumentOutOfRange_OptionsInvalid);
             }
-            ArgumentOutOfRangeException.ThrowIfNotBetween(impersonationLevel, TokenImpersonationLevel.None, TokenImpersonationLevel.Delegation);
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(impersonationLevel, TokenImpersonationLevel.None, TokenImpersonationLevel.Delegation);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
             if ((options & PipeOptions.CurrentUserOnly) != 0)
             {
                 IsCurrentUserOnly = true;

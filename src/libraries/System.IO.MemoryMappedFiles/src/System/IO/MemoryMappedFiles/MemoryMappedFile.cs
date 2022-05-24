@@ -62,7 +62,7 @@ namespace System.IO.MemoryMappedFiles
         {
             ArgumentException.ThrowIfNullOrEmpty(mapName);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             if (((int)desiredAccessRights & ~((int)(MemoryMappedFileRights.FullControl | MemoryMappedFileRights.AccessSystemSecurity))) != 0)
             {
@@ -112,7 +112,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(capacity);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (mode == FileMode.Append)
             {
@@ -195,14 +195,14 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentException(SR.Argument_EmptyFile);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (access == MemoryMappedFileAccess.Write)
             {
                 throw new ArgumentException(SR.Argument_NewMMFWriteAccessNotAllowed, nameof(access));
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             // flush any bytes written to the FileStream buffer so that we can see them in our MemoryMappedFile
             fileStream.Flush();
@@ -249,7 +249,7 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(capacity), SR.ArgumentOutOfRange_CapacityLargerThanLogicalAddressSpaceNotAllowed);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (access == MemoryMappedFileAccess.Write)
             {
@@ -261,7 +261,7 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(options));
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             SafeMemoryMappedFileHandle handle = CreateCore(null, mapName, inheritability, access, options, capacity, -1);
             return new MemoryMappedFile(handle);
@@ -299,14 +299,14 @@ namespace System.IO.MemoryMappedFiles
                 throw new ArgumentOutOfRangeException(nameof(capacity), SR.ArgumentOutOfRange_CapacityLargerThanLogicalAddressSpaceNotAllowed);
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (((int)options & ~((int)(MemoryMappedFileOptions.DelayAllocatePages))) != 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(options));
             }
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(inheritability, HandleInheritability.None, HandleInheritability.Inheritable);
 
             SafeMemoryMappedFileHandle handle;
             // special case for write access; create will never succeed
@@ -338,7 +338,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(size);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (IntPtr.Size == 4 && size > uint.MaxValue)
             {
@@ -366,7 +366,7 @@ namespace System.IO.MemoryMappedFiles
 
             ArgumentOutOfRangeException.ThrowIfNegative(size);
 
-            ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(access, MemoryMappedFileAccess.ReadWrite, MemoryMappedFileAccess.ReadWriteExecute);
 
             if (IntPtr.Size == 4 && size > uint.MaxValue)
             {

@@ -84,7 +84,7 @@ namespace System.Security.AccessControl
 
         private static int AccessMaskFromRights(FileSystemRights fileSystemRights)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(fileSystemRights, 0, FileSystemRights.FullControl);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(fileSystemRights, 0, FileSystemRights.FullControl);
 
             return (int)fileSystemRights;
         }

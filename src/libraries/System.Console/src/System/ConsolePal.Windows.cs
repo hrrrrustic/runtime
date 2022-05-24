@@ -659,8 +659,8 @@ namespace System
             char sourceChar, ConsoleColor sourceForeColor,
             ConsoleColor sourceBackColor)
         {
-            ArgumentOutOfRangeException.ThrowIfNotBetween(sourceForeColor, ConsoleColor.Black, ConsoleColor.White);
-            ArgumentOutOfRangeException.ThrowIfNotBetween(sourceBackColor, ConsoleColor.Black, ConsoleColor.White);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(sourceForeColor, ConsoleColor.Black, ConsoleColor.White);
+            //ArgumentOutOfRangeException.ThrowIfNotBetween(sourceBackColor, ConsoleColor.Black, ConsoleColor.White);
 
             Interop.Kernel32.CONSOLE_SCREEN_BUFFER_INFO csbi = GetBufferInfo();
             Interop.Kernel32.COORD bufferSize = csbi.dwSize;
