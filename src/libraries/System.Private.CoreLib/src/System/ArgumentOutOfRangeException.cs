@@ -94,6 +94,13 @@ namespace System
                 throw new ArgumentOutOfRangeException(paramName);
         }
 
+        public static void ThrowIfNotBetween<T>(T value, T left, T right, [CallerArgumentExpression("value")] string? paramName = null)
+            where T : struct, IComparisonOperators<T, T>
+        {
+            if (value < left || value > right)
+                throw new ArgumentOutOfRangeException(paramName);
+        }
+
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
