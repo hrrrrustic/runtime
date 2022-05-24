@@ -11,6 +11,8 @@
 =============================================================================*/
 
 using System.Runtime.Serialization;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace System
 {
@@ -63,6 +65,14 @@ namespace System
         {
             _actualValue = info.GetValue("ActualValue", typeof(object));
         }
+
+        public static void ThrowIfNegative<T>(T value, [CallerArgumentExpression("value")] string? paramName = null)
+            where T : struct, INumberBase<T>, ISignedNumber<T>, IComparisonOperators<T, T>
+        {
+            if (value < T.Zero)
+                throw new ArgumentOutOfRangeException(paramName);
+        }
+
 
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
