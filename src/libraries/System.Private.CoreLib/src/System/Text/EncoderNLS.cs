@@ -49,9 +49,7 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(index < 0 ? nameof(index) : nameof(count),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (chars.Length - index < count)
-                throw new ArgumentOutOfRangeException(nameof(chars),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - index, count);
 
             // Just call the pointer version
             int result = -1;
@@ -86,9 +84,7 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(charIndex < 0 ? nameof(charIndex) : nameof(charCount),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (chars.Length - charIndex < charCount)
-                throw new ArgumentOutOfRangeException(nameof(chars),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - charIndex, charCount);
 
             if (byteIndex < 0 || byteIndex > bytes.Length)
                 throw new ArgumentOutOfRangeException(nameof(byteIndex),
@@ -137,13 +133,9 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(byteIndex < 0 ? nameof(byteIndex) : nameof(byteCount),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (chars.Length - charIndex < charCount)
-                throw new ArgumentOutOfRangeException(nameof(chars),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - charIndex, charCount);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
             // Just call the pointer version (can't do this for non-msft encoders)
             fixed (char* pChars = &MemoryMarshal.GetReference((Span<char>)chars))

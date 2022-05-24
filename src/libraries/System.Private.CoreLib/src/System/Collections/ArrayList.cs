@@ -85,10 +85,7 @@ namespace System.Collections
             get => _items.Length;
             set
             {
-                if (value < _size)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_SmallCapacity);
-                }
+                ArgumentOutOfRangeException.ThrowIfLessThan(value, _size);
 
                 // We don't want to update the version number when we change the capacity.
                 // Some existing applications have dependency on this.
@@ -390,8 +387,7 @@ namespace System.Collections
         //
         public virtual int IndexOf(object? value, int startIndex)
         {
-            if (startIndex > _size)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, _size);
             return Array.IndexOf((Array)_items, value, startIndex, _size - startIndex);
         }
 
@@ -406,8 +402,7 @@ namespace System.Collections
         //
         public virtual int IndexOf(object? value, int startIndex, int count)
         {
-            if (startIndex > _size)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, _size);
             if (count < 0 || startIndex > _size - count) throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_Count);
             return Array.IndexOf((Array)_items, value, startIndex, count);
         }
@@ -758,7 +753,7 @@ namespace System.Collections
                 get => _list.Count;
                 set
                 {
-                    if (value < Count) throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_SmallCapacity);
+                    ArgumentOutOfRangeException.ThrowIfLessThan(value, Count);
                 }
             }
 
@@ -2271,7 +2266,7 @@ namespace System.Collections
 
                 set
                 {
-                    if (value < Count) throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_SmallCapacity);
+                    ArgumentOutOfRangeException.ThrowIfLessThan(value, Count);
                 }
             }
 
@@ -2403,8 +2398,7 @@ namespace System.Collections
             {
                 if (startIndex < 0)
                     throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_NeedNonNegNum);
-                if (startIndex > _baseSize)
-                    throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, _baseSize);
 
                 InternalUpdateRange();
                 int i = _baseList.IndexOf(value, _baseIndex + startIndex, _baseSize - startIndex);

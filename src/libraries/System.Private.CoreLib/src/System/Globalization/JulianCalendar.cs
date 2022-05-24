@@ -353,13 +353,7 @@ namespace System.Globalization
             {
                 throw new ArgumentOutOfRangeException(nameof(year), year, SR.ArgumentOutOfRange_NeedNonNegNum);
             }
-            if (year > MaxYear)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(year),
-                    year,
-                    SR.Format(SR.ArgumentOutOfRange_Bounds_Lower_Upper, 1, MaxYear));
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(year, MaxYear);
 
             return base.ToFourDigitYear(year);
         }

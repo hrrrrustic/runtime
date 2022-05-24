@@ -52,8 +52,7 @@ namespace System.Text
             if (index < 0 || count < 0)
                 throw new ArgumentOutOfRangeException(index < 0 ? nameof(index) : nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - index < count)
-                throw new ArgumentOutOfRangeException(nameof(bytes), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - index, count);
 
             if (count == 0 && (_leftOverLeadByte == 0 || !flush))
                 return 0;
@@ -134,8 +133,7 @@ namespace System.Text
             if (byteIndex < 0 || byteCount < 0)
                 throw new ArgumentOutOfRangeException(byteIndex < 0 ? nameof(byteIndex) : nameof(byteCount), SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
             if (charIndex < 0 || charIndex > chars.Length)
                 throw new ArgumentOutOfRangeException(nameof(charIndex), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
@@ -207,11 +205,9 @@ namespace System.Text
             if (charIndex < 0 || charCount < 0)
                 throw new ArgumentOutOfRangeException(charIndex < 0 ? nameof(charIndex) : nameof(charCount), SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
-            if (chars.Length - charIndex < charCount)
-                throw new ArgumentOutOfRangeException(nameof(chars), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - charIndex, charCount);
 
             if (charCount == 0 || (bytes.Length == 0 && (_leftOverLeadByte == 0 || !flush)))
             {

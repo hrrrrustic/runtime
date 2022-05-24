@@ -557,9 +557,7 @@ namespace System.Text
             if (count < 0)
                 throw new ArgumentOutOfRangeException(nameof(count),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (index > s.Length - count)
-                throw new ArgumentOutOfRangeException(nameof(index),
-                      SR.ArgumentOutOfRange_IndexCount);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, s.Length - count);
 
             unsafe
             {
@@ -655,9 +653,7 @@ namespace System.Text
             if (count < 0)
                 throw new ArgumentOutOfRangeException(nameof(count),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (index > s.Length - count)
-                throw new ArgumentOutOfRangeException(nameof(index),
-                      SR.ArgumentOutOfRange_IndexCount);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, s.Length - count);
 
             unsafe
             {

@@ -288,11 +288,7 @@ namespace System.Threading
         {
             CheckDispose();
 
-            if (millisecondsTimeout < -1)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(millisecondsTimeout), millisecondsTimeout, SR.SemaphoreSlim_Wait_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(millisecondsTimeout, -1);
 
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -598,11 +594,7 @@ namespace System.Threading
         {
             CheckDispose();
 
-            if (millisecondsTimeout < -1)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(millisecondsTimeout), millisecondsTimeout, SR.SemaphoreSlim_Wait_TimeoutWrong);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(millisecondsTimeout, -1);
 
             // Bail early for cancellation
             if (cancellationToken.IsCancellationRequested)

@@ -39,10 +39,7 @@ namespace System.Net
         {
             _httpListener.CheckDisposed();
             ArgumentNullException.ThrowIfNull(array);
-            if (Count > array.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(array), SR.net_array_too_small);
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(Count, array.Length);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(offset + Count, array.Length);
             int index = 0;
             foreach (string uriPrefix in _httpListener.PrefixCollection)
@@ -55,10 +52,7 @@ namespace System.Net
         {
             _httpListener.CheckDisposed();
             ArgumentNullException.ThrowIfNull(array);
-            if (Count > array.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(array), SR.net_array_too_small);
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(Count, array.Length);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(offset + Count, array.Length);
             int index = 0;
             foreach (string uriPrefix in _httpListener.PrefixCollection)

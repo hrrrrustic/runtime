@@ -737,18 +737,12 @@ namespace System.Runtime.Serialization.Json
                 {
                     throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
                 }
-                if (offset > buffer.Length)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(offset), SR.Format(SR.OffsetExceedsBufferSize, buffer.Length));
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, buffer.Length);
                 if (count < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
                 }
-                if (count > buffer.Length - offset)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(count), SR.Format(SR.SizeExceedsRemainingBufferSpace, buffer.Length - offset));
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(count, buffer.Length - offset);
 
                 return 0;
             }
@@ -765,18 +759,12 @@ namespace System.Runtime.Serialization.Json
                 {
                     throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
                 }
-                if (offset > chars.Length)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(offset), SR.Format(SR.OffsetExceedsBufferSize, chars.Length));
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, chars.Length);
                 if (count < 0)
                 {
                     throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
                 }
-                if (count > chars.Length - offset)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(count), SR.Format(SR.SizeExceedsRemainingBufferSpace, chars.Length - offset));
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(count, chars.Length - offset);
                 int actual;
 
                 string value = UnescapeJsonString(this.Node.ValueAsString);
@@ -808,18 +796,12 @@ namespace System.Runtime.Serialization.Json
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
             }
-            if (offset > buffer.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.Format(SR.JsonOffsetExceedsBufferSize, buffer.Length));
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, buffer.Length);
             if (count < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
             }
-            if (count > buffer.Length - offset)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), SR.Format(SR.JsonSizeExceedsRemainingBufferSpace, buffer.Length - offset));
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(count, buffer.Length - offset);
             MoveToInitial(quotas, onClose);
 
             ArraySegment<byte> seg = JsonEncodingStreamWrapper.ProcessBuffer(buffer, offset, count, encoding);
@@ -855,18 +837,12 @@ namespace System.Runtime.Serialization.Json
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), SR.ValueMustBeNonNegative);
             }
-            if (offset > array.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.Format(SR.OffsetExceedsBufferSize, array.Length));
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, array.Length);
             if (count < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ValueMustBeNonNegative);
             }
-            if (count > array.Length - offset)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), SR.Format(SR.SizeExceedsRemainingBufferSpace, array.Length - offset));
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(count, array.Length - offset);
         }
 
         private static int BreakText(byte[] buffer, int offset, int length)

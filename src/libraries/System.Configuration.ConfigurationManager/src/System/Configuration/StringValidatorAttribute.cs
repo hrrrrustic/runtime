@@ -17,8 +17,7 @@ namespace System.Configuration
             get { return _minLength; }
             set
             {
-                if (_maxLength < value)
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.Validator_min_greater_than_max);
+                ArgumentOutOfRangeException.ThrowIfLessThan(_maxLength, value);
 
                 _minLength = value;
             }
@@ -29,8 +28,7 @@ namespace System.Configuration
             get { return _maxLength; }
             set
             {
-                if (_minLength > value)
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.Validator_min_greater_than_max);
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(_minLength, value);
 
                 _maxLength = value;
             }

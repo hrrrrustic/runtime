@@ -267,12 +267,7 @@ namespace System.Security.AccessControl
                     SR.ArgumentOutOfRange_NeedNonNegNum);
             }
 
-            if (binaryForm.Length - offset < BinaryLength)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(binaryForm),
-                    SR.ArgumentOutOfRange_ArrayTooSmall);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(binaryForm.Length - offset, BinaryLength);
 
             //
             // the offset will grow as we go for each additional field (owner, group,
@@ -486,12 +481,7 @@ namespace System.Security.AccessControl
             // At least make sure the header is in place
             //
 
-            if (binaryForm.Length - offset < HeaderLength)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(binaryForm),
-                    SR.ArgumentOutOfRange_ArrayTooSmall);
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(binaryForm.Length - offset, HeaderLength);
 
             //
             // We only understand revision-1 security descriptors

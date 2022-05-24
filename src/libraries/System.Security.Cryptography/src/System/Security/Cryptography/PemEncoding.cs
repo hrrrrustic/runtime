@@ -357,10 +357,8 @@ namespace System.Security.Cryptography
                 throw new ArgumentOutOfRangeException(nameof(labelLength), SR.ArgumentOutOfRange_NeedPosNum);
             if (dataLength < 0)
                 throw new ArgumentOutOfRangeException(nameof(dataLength), SR.ArgumentOutOfRange_NeedPosNum);
-            if (labelLength > MaxLabelSize)
-                throw new ArgumentOutOfRangeException(nameof(labelLength), SR.Argument_PemEncoding_EncodedSizeTooLarge);
-            if (dataLength > MaxDataLength)
-                throw new ArgumentOutOfRangeException(nameof(dataLength), SR.Argument_PemEncoding_EncodedSizeTooLarge);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(labelLength, MaxLabelSize);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(dataLength, MaxDataLength);
 
             int preebLength = PreEBPrefix.Length + labelLength + Ending.Length;
             int postebLength = PostEBPrefix.Length + labelLength + Ending.Length;

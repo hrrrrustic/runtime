@@ -561,10 +561,7 @@ namespace System
             {
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NegativeCount);
             }
-            if (startIndex > value.Length - count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_IndexCountBuffer);
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, value.Length - count);
 
             return JoinCore(separator, new ReadOnlySpan<string?>(value, startIndex, count));
         }
@@ -860,8 +857,7 @@ namespace System
             if (count < 0)
                 throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_NegativeCount);
             int oldLength = this.Length;
-            if (count > oldLength - startIndex)
-                throw new ArgumentOutOfRangeException(nameof(count), SR.ArgumentOutOfRange_IndexCount);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(count, oldLength - startIndex);
 
             if (count == 0)
                 return this;
@@ -880,8 +876,7 @@ namespace System
         // a remove that just takes a startindex.
         public string Remove(int startIndex)
         {
-            if ((uint)startIndex > Length)
-                throw new ArgumentOutOfRangeException(nameof(startIndex), startIndex < 0 ? SR.ArgumentOutOfRange_StartIndex : SR.ArgumentOutOfRange_StartIndexLargerThanLength);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)startIndex, Length);
 
             return Substring(0, startIndex);
         }
@@ -1807,20 +1802,14 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndex);
             }
 
-            if (startIndex > Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(startIndex), SR.ArgumentOutOfRange_StartIndexLargerThanLength);
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, Length);
 
             if (length < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_NegativeLength);
             }
 
-            if (startIndex > Length - length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(length), SR.ArgumentOutOfRange_IndexLength);
-            }
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(startIndex, Length - length);
 
             if (length == 0)
             {

@@ -263,8 +263,7 @@ namespace System.IO
             {
                 // Only update the capacity if the MS is expandable and the value is different than the current capacity.
                 // Special behavior if the MS isn't expandable: we don't throw if value is the same as the current capacity
-                if (value < Length)
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_SmallCapacity);
+                ArgumentOutOfRangeException.ThrowIfLessThan(value, Length);
 
                 EnsureNotClosed();
 
@@ -315,8 +314,7 @@ namespace System.IO
 
                 EnsureNotClosed();
 
-                if (value > MemStreamMaxLength)
-                    throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_StreamLength);
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(value, MemStreamMaxLength);
                 _position = _origin + (int)value;
             }
         }
@@ -517,8 +515,7 @@ namespace System.IO
         {
             EnsureNotClosed();
 
-            if (offset > MemStreamMaxLength)
-                throw new ArgumentOutOfRangeException(nameof(offset), SR.ArgumentOutOfRange_StreamLength);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(offset, MemStreamMaxLength);
 
             switch (loc)
             {
@@ -573,8 +570,7 @@ namespace System.IO
 
             // Origin wasn't publicly exposed above.
             Debug.Assert(MemStreamMaxLength == int.MaxValue);  // Check parameter validation logic in this method if this fails.
-            if (value > (int.MaxValue - _origin))
-                throw new ArgumentOutOfRangeException(nameof(value), SR.ArgumentOutOfRange_StreamLength);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(value, (int.MaxValue - _origin));
 
             int newLength = _origin + (int)value;
             bool allocatedNewArray = EnsureCapacity(newLength);

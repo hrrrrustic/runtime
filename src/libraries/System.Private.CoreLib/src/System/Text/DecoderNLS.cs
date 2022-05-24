@@ -54,9 +54,7 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(index < 0 ? nameof(index) : nameof(count),
                     SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - index < count)
-                throw new ArgumentOutOfRangeException(nameof(bytes),
-                    SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - index, count);
 
             // Just call pointer version
             fixed (byte* pBytes = &MemoryMarshal.GetReference((Span<byte>)bytes))
@@ -96,9 +94,7 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(byteIndex < 0 ? nameof(byteIndex) : nameof(byteCount),
                     SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes),
-                    SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
             if (charIndex < 0 || charIndex > chars.Length)
                 throw new ArgumentOutOfRangeException(nameof(charIndex),
@@ -150,13 +146,9 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(charIndex < 0 ? nameof(charIndex) : nameof(charCount),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
-            if (chars.Length - charIndex < charCount)
-                throw new ArgumentOutOfRangeException(nameof(chars),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - charIndex, charCount);
 
             // Just call the pointer version (public overrides can't do this)
             fixed (byte* pBytes = &MemoryMarshal.GetReference((Span<byte>)bytes))

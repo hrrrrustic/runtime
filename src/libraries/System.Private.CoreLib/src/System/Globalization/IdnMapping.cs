@@ -69,10 +69,8 @@ namespace System.Globalization
 
             if (index < 0 || count < 0)
                 throw new ArgumentOutOfRangeException((index < 0) ? nameof(index) : nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (index > unicode.Length)
-                throw new ArgumentOutOfRangeException(nameof(index), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
-            if (index > unicode.Length - count)
-                throw new ArgumentOutOfRangeException(nameof(unicode), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, unicode.Length);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, unicode.Length - count);
 
             if (count == 0)
             {
@@ -116,10 +114,8 @@ namespace System.Globalization
 
             if (index < 0 || count < 0)
                 throw new ArgumentOutOfRangeException((index < 0) ? nameof(index) : nameof(count), SR.ArgumentOutOfRange_NeedNonNegNum);
-            if (index > ascii.Length)
-                throw new ArgumentOutOfRangeException(nameof(index), SR.ArgumentOutOfRange_IndexMustBeLessOrEqual);
-            if (index > ascii.Length - count)
-                throw new ArgumentOutOfRangeException(nameof(ascii), SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, ascii.Length);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, ascii.Length - count);
 
             // This is a case (i.e. explicitly null-terminated input) where behavior in .NET and Win32 intentionally differ.
             // The .NET APIs should (and did in v4.0 and earlier) throw an ArgumentException on input that includes a terminating null.

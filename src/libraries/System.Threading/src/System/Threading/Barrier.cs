@@ -344,11 +344,7 @@ namespace System.Threading
                 int current;
                 bool sense;
                 GetCurrentTotal(currentTotal, out current, out total, out sense);
-                if (participantCount + total > MAX_PARTICIPANTS) //overflow
-                {
-                    throw new ArgumentOutOfRangeException(nameof(participantCount),
-                        SR.Barrier_AddParticipants_Overflow_ArgumentOutOfRange);
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(participantCount + total, MAX_PARTICIPANTS);
 
                 if (SetCurrentTotal(currentTotal, current, total + participantCount, sense))
                 {
@@ -443,11 +439,7 @@ namespace System.Threading
                 bool sense;
                 GetCurrentTotal(currentTotal, out current, out total, out sense);
 
-                if (total < participantCount)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(participantCount),
-                        SR.Barrier_RemoveParticipants_ArgumentOutOfRange);
-                }
+                ArgumentOutOfRangeException.ThrowIfLessThan(total, participantCount);
                 if (total - participantCount < current)
                 {
                     throw new InvalidOperationException(SR.Barrier_RemoveParticipants_InvalidOperation);

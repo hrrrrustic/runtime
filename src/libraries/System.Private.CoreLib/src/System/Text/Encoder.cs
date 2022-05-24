@@ -229,13 +229,9 @@ namespace System.Text
                 throw new ArgumentOutOfRangeException(byteIndex < 0 ? nameof(byteIndex) : nameof(byteCount),
                       SR.ArgumentOutOfRange_NeedNonNegNum);
 
-            if (chars.Length - charIndex < charCount)
-                throw new ArgumentOutOfRangeException(nameof(chars),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(chars.Length - charIndex, charCount);
 
-            if (bytes.Length - byteIndex < byteCount)
-                throw new ArgumentOutOfRangeException(nameof(bytes),
-                      SR.ArgumentOutOfRange_IndexCountBuffer);
+            ArgumentOutOfRangeException.ThrowIfLessThan(bytes.Length - byteIndex, byteCount);
 
             charsUsed = charCount;
 
