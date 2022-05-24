@@ -79,8 +79,7 @@ namespace System.Runtime.CompilerServices
             get { return _items.Length; }
             set
             {
-                if (value < _size)
-                    throw new ArgumentOutOfRangeException(nameof(value));
+                ArgumentOutOfRangeException.ThrowIfLessThan(value, _size);
 
                 if (value != _items.Length)
                 {
@@ -125,8 +124,7 @@ namespace System.Runtime.CompilerServices
         /// <param name="item">The object to insert into the <see cref="ReadOnlyCollectionBuilder{T}"/>.</param>
         public void Insert(int index, T item)
         {
-            if (index > _size)
-                throw new ArgumentOutOfRangeException(nameof(index));
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(index, _size);
 
             if (_size == _items.Length)
             {

@@ -69,15 +69,13 @@ namespace System
         public static void ThrowIfNegative<T>(T value, [CallerArgumentExpression("value")] string? paramName = null)
             where T : struct, INumberBase<T>, ISignedNumber<T>, IComparisonOperators<T, T>
         {
-            if (value < T.Zero)
-                throw new ArgumentOutOfRangeException(paramName);
+            ArgumentOutOfRangeException.ThrowIfLessThan(value, T.Zero);
         }
 
         public static void ThrowIfGreaterThan<T>(T value, T other, [CallerArgumentExpression("value")] string? paramName = null)
             where T : struct, IComparisonOperators<T, T>
         {
-            if (value > other)
-                throw new ArgumentOutOfRangeException(paramName);
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(value, other);
         }
 
         public static void ThrowIfNegativeOrZero<T>(T value, [CallerArgumentExpression("value")] string? paramName = null)

@@ -502,8 +502,7 @@ namespace System
         {
             ArgumentNullException.ThrowIfNull(value);
 
-            if ((uint)startIndex > Length)
-                throw new ArgumentOutOfRangeException(nameof(startIndex));
+            ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)startIndex, Length);
 
             int oldLength = Length;
             int insertLength = value.Length;

@@ -1601,10 +1601,7 @@ namespace System.Xml
             ArgumentNullException.ThrowIfNull(buffer);
             ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfNegative(index);
-            if (buffer.Length - index < count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(buffer.Length - index, count);
 
             // if not the first call to ReadContentAsBase64
             if (_parsingFunction == ParsingFunction.InReadContentAsBinary)
@@ -1651,10 +1648,7 @@ namespace System.Xml
             ArgumentNullException.ThrowIfNull(buffer);
             ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfNegative(index);
-            if (buffer.Length - index < count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(buffer.Length - index, count);
 
             // if not the first call to ReadContentAsBinHex
             if (_parsingFunction == ParsingFunction.InReadContentAsBinary)
@@ -1700,10 +1694,7 @@ namespace System.Xml
             ArgumentNullException.ThrowIfNull(buffer);
             ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfNegative(index);
-            if (buffer.Length - index < count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(buffer.Length - index, count);
 
             // if not the first call to ReadContentAsBase64
             if (_parsingFunction == ParsingFunction.InReadElementContentAsBinary)
@@ -1750,10 +1741,7 @@ namespace System.Xml
             ArgumentNullException.ThrowIfNull(buffer);
             ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfNegative(index);
-            if (buffer.Length - index < count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(buffer.Length - index, count);
 
             // if not the first call to ReadContentAsBinHex
             if (_parsingFunction == ParsingFunction.InReadElementContentAsBinary)
@@ -1813,10 +1801,7 @@ namespace System.Xml
             ArgumentNullException.ThrowIfNull(buffer);
             ArgumentOutOfRangeException.ThrowIfNegative(count);
             ArgumentOutOfRangeException.ThrowIfNegative(index);
-            if (buffer.Length - index < count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            ArgumentOutOfRangeException.ThrowIfLessThan(buffer.Length - index, count);
 
             // first call of ReadValueChunk -> initialize incremental read state
             if (_parsingFunction != ParsingFunction.InReadValueChunk)
@@ -2092,10 +2077,7 @@ namespace System.Xml
             {
                 Debug.Assert(_v1Compat, "XmlTextReaderImpl.DtdProcessing property cannot be changed on reader created via XmlReader.Create.");
 
-                if ((uint)value > (uint)DtdProcessing.Parse)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value));
-                }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan((uint)value, (uint)DtdProcessing.Parse);
 
                 _dtdProcessing = value;
             }
