@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Collections.Generic;
+using System.Buffers;
 using System.IO;
 using System.Linq;
 using Xunit;
@@ -47,6 +48,14 @@ namespace System.Text.Json.Tests
                 writer.Reset();
                 ms.SetLength(0);
                 writer.WriteRawValue(rawJsonAsStr.AsSpan(), skipInputValidation);
+                writer.Flush();
+                verifyWithDeserialize(ms.ToArray());
+
+                //ReadOnlySequence<byte>
+                writer.Reset();
+                ms.SetLength(0);
+                var seq = new ReadOnlySequence<byte>(rawJson);
+                writer.WriteRawValue(seq, skipInputValidation);
                 writer.Flush();
                 verifyWithDeserialize(ms.ToArray());
             }
@@ -244,7 +253,8 @@ namespace System.Text.Json.Tests
             Assert.Throws<ArgumentNullException>(() => writer.WriteRawValue(json: default(string)));
             Assert.Throws<ArgumentException>(() => writer.WriteRawValue(json: ""));
             Assert.Throws<ArgumentException>(() => writer.WriteRawValue(json: default(ReadOnlySpan<char>)));
-            Assert.Throws<ArgumentException>(() => writer.WriteRawValue(utf8Json: default));
+            Assert.Throws<ArgumentException>(() => writer.WriteRawValue(utf8Json: default(ReadOnlySequence<byte>)));
+            Assert.Throws<ArgumentException>(() => writer.WriteRawValue(utf8Json: default(ReadOnlySpan<byte>)));
         }
 
         [Theory]
@@ -406,6 +416,7 @@ namespace System.Text.Json.Tests
             RunTest(OverloadParamType.ROSChar);
             RunTest(OverloadParamType.String);
             RunTest(OverloadParamType.ByteArray);
+            RunTest(OverloadParamType.ROSequenceByte);
 
             void RunTest(OverloadParamType paramType)
             {
@@ -450,7 +461,8 @@ namespace System.Text.Json.Tests
         {
             ROSChar,
             String,
-            ByteArray
+            ByteArray,
+            ROSequenceByte
         }
 
         private static void WriteRawValueWithSetting(Utf8JsonWriter writer, string payload, OverloadParamType param)
@@ -466,6 +478,10 @@ namespace System.Text.Json.Tests
                 case OverloadParamType.ByteArray:
                     byte[] payloadAsBytes = Encoding.UTF8.GetBytes(payload);
                     writer.WriteRawValue(payloadAsBytes);
+                    break;
+                case OverloadParamType.ROSequenceByte:
+                    ReadOnlySequence<byte> payloadAsSeq = new ReadOnlySequence<byte>(Encoding.UTF8.GetBytes(payload));
+                    writer.WriteRawValue(payloadAsSeq);
                     break;
             }
         }
@@ -499,6 +515,9 @@ namespace System.Text.Json.Tests
             // UTF-8 overload is okay.
             WriteRawValueWithSetting(writer, payload, OverloadParamType.ByteArray);
             writer.Flush();
+            WriteRawValueWithSetting(writer, payload, OverloadParamType.ROSequenceByte);
+            writer.Flush();
+
 
             Assert.Equal(payload.Length, Encoding.UTF8.GetString(ms.ToArray()).Length);
         }
@@ -526,6 +545,7 @@ namespace System.Text.Json.Tests
             RunTest(OverloadParamType.ROSChar);
             RunTest(OverloadParamType.String);
             RunTest(OverloadParamType.ByteArray);
+            RunTest(OverloadParamType.ROSequenceByte);
 
             void RunTest(OverloadParamType paramType)
             {
