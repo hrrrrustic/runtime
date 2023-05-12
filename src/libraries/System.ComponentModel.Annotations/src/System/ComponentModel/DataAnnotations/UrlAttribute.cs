@@ -17,15 +17,23 @@ namespace System.ComponentModel.DataAnnotations
 
         public override bool IsValid(object? value)
         {
-            if (value == null)
-            {
+            if (value is null)
                 return true;
-            }
 
-            return value is string valueAsString &&
-                (valueAsString.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
-                || valueAsString.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
-                || valueAsString.StartsWith("ftp://", StringComparison.OrdinalIgnoreCase));
+            if (value is string str)
+                return IsValidString(str);
+
+            return value is Uri uri && IsValidUri(uri);
         }
+
+        private static bool IsValidUri(Uri uri) =>
+            uri.Scheme == Uri.UriSchemeHttp
+            || uri.Scheme == Uri.UriSchemeHttps
+            || uri.Scheme == Uri.UriSchemeFtp;
+
+        private static bool IsValidString(string value) =>
+            value.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+            || value.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
+            || value.StartsWith("ftp://", StringComparison.OrdinalIgnoreCase);
     }
 }
